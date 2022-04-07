@@ -18,13 +18,13 @@ body {
 	padding: 0px;
 	margin: 0px;
 	font-family: 'Open Sans', Verdana, 'DejaVu Sans', Arial, sans-serif;
-	background-color: #ede1cc;
+	background-color: #ff0000;
 }
 
 .nav {
-	background-color: #00001a;
-	border-bottom: 1.5px solid #b48648;
-	box-shadow: 0px 1px 4px black;
+	background-color: #d70000;
+	border-bottom: 1.5px solid #ffffff;
+	box-shadow: 0px 1px 4px #d70000;
 }
 .centratonav{
 	width: 550px;
