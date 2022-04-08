@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../stile.css">
-    <title>Registro online - Registrazione</title>
+    <title>Registro online - Login</title>
 </head>
 
 <body>
@@ -33,22 +33,10 @@
     </div> -->
 
     <div class="header">
-        <h2>Registrazione</h2>
+        <h2>Login</h2>
     </div>  
        
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group">
-            <label> Nome </label>
-            <input type="text" name="nome" <?php echo "value = '$nome'" ?>>
-        </div>
-        <div class="input-group">
-            <label> Cognome </label>
-            <input name="cognome" <?php echo "value = '$cognome'" ?>>
-        </div>
-        <div class="input-group">
-            <label> Data di nascita </label>
-            <input type="text" name="nascita" <?php echo "value = '$data_nascita'" ?> required>
-        </div>
         <div class="input-group">
             <label> Email </label>
             <input type="text" name="email" <?php echo "value = '$email'" ?> required>
@@ -57,13 +45,9 @@
             <label> Password </label>
             <input type="password" name="password" <?php echo "value = '$password'" ?> required>
         </div>
-        <div class="input-group">
-            <label> Conferma psw </label>
-            <input type="password" name="conferma" <?php echo "value = '$conferma'" ?> required>
-        </div>
     
         <div class="input-group">
-            <button type="submit" name="Registrati" class="btn"> Registrati </button>
+            <button type="submit" name="login" class="btn"> Login </button>
         </div>
         
 <!--                 <tr>
@@ -75,7 +59,7 @@
             </table> -->
 
             <p>
-                Se sei già registrato: <a href="login.php"> vai al login </a> 
+                Se non ti sei ancora registrato: <a href="registrazione.php"> vai alla registrazione </a> 
             </p>
         </form>
 
