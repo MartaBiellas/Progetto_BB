@@ -56,3 +56,17 @@ form{
     border: none;
     border-radius: 5px;
 }
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #00001a;
+	border-top: 1.5px solid red;
+	box-shadow: 1px 0px 4px black;
+	color: brown;
+	font-size: 9px;
+	text-align: center;
+	padding: 10px;
+}

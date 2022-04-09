@@ -42,20 +42,6 @@ body {
 	padding-bottom: 35px;
 }
 
-.footer {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: #00001a;
-	border-top: 1.5px solid #b48648;
-	box-shadow: 1px 0px 4px black;
-	color: #cec0af;
-	font-size: 9px;
-	text-align: center;
-	padding: 10px;
-}
-
 #tab_dati_personali{
 	/* width: 500px; */
 	text-align: left;
