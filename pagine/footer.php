@@ -1,12 +1,20 @@
 <?php 
     echo '<div class="footer">';
-    echo '<em>"Registro Online"</em>, esempio di sito dinamico in PHP realizzato da Francesco Tormene';
+    echo '<br>';
 
-    echo '<div class="social col">';
-    echo '<img src="../img/logo.svg" alt="">';
     echo '<img src="../img/insta.png">';
-    echo '<img src="../img/facebook.png">';
-    echo '</div>';
+    echo '<img src="../img/fb.jpg">';
+    echo '<img src="../img/yt.png">';
 
+    echo '<br>';
+    echo '<em>Engineered & Powered by Marta Biella & Valentina Brescia</em>';
     echo '</div>';
 ?>
+
+<!-- background-color: #CC1020;
+}
+
+.main-tabs>.main-tab.active,
+.a-teamviewer:hover
+{
+	color: #990C18; -->
