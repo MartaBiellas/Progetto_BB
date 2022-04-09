@@ -62,11 +62,17 @@ form{
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: #00001a;
+	background-color: red;
 	border-top: 1.5px solid red;
 	box-shadow: 1px 0px 4px black;
 	color: brown;
-	font-size: 9px;
+	font-size: 15px;
 	text-align: center;
 	padding: 10px;
 }
+
+.social img{
+    text-align: right;
+    width: 40px;
+    margin-left: 10px;
+  }
