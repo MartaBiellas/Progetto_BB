@@ -79,6 +79,8 @@
             </p>
         </form>
 
+<br>
+
         <p>
             <?php
             if(isset($_POST["username"]) and isset($_POST["password"])) {

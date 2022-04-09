@@ -1,6 +1,13 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
+}
+
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 body{
@@ -58,7 +65,7 @@ form{
 }
 
 .footer {
-	position: fixed;
+	/* position: fixed; */
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -73,6 +80,6 @@ form{
 
 .social img{
     text-align: right;
-    width: 40px;
+    width: 70px;
     margin-left: 10px;
   }
