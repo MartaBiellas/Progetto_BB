@@ -1,3 +1,4 @@
+<<<<<<< HEAD:pagine/login_studente.php
 <?php
 	session_start();
 	//echo session_id();
@@ -25,7 +26,6 @@
 	else {
 		$password = "";
 	}
-
 ?>
 
 
