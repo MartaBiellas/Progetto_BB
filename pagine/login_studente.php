@@ -1,15 +1,33 @@
-<?php 
-    if(isset($_POST["username"])) $username = $_POST["username"];  else $username = "";
-    if(isset($_POST["password"])) $password = $_POST["password"];  else $password = "";
-    if(isset($_POST["conferma"])) $conferma = $_POST["conferma"];  else $conferma = "";
-    if(isset($_POST["nome"])) $nome = $_POST["nome"];  else $nome = "";
-    if(isset($_POST["cognome"])) $cognome = $_POST["cognome"];  else $cognome = "";
-    if(isset($_POST["email"])) $email = $_POST["email"];  else $email = "";
-    if(isset($_POST["telefono"])) $telefono = $_POST["telefono"];  else $telefono = "";
-    if(isset($_POST["comune"])) $comune = $_POST["comune"];  else $comune = "";
-    if(isset($_POST["indirizzo"])) $indirizzo = $_POST["indirizzo"];  else $indirizzo = "";
-    if(isset($_POST["tipologia"])) $tipologia = $_POST["tipologia"];  else $tipologia = "utenti";
+<?php
+	session_start();
+	//echo session_id();
+
+	require('../data/dati_connessione_db.php');
+	// $servername = "localhost";
+	// $db_name = "biblioteca";
+	// $db_username = "root";
+	// $db_password = "";
+
+	if(isset($_SESSION['email'])){
+		header('location: pagine/home.php');
+	}
+
+	if(isset($_POST["email"])){
+		$email = $_POST["email"];
+	}
+	else{
+		$email = "";
+	}
+	
+	if (isset($_POST["password"])){
+		$password = $_POST["password"];
+	}
+	else {
+		$password = "";
+	}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +51,8 @@
     </div> -->
 
     <div class="header">
+        <img src="../img/studenti.jpg">
+        <h1>STUDENTE</h1>
         <h2>Login</h2>
     </div>  
        
@@ -49,17 +69,9 @@
         <div class="input-group">
             <button type="submit" name="login" class="btn"> Login </button>
         </div>
-        
-<!--                 <tr>
-                    <td colspan="2" style="text-align: center">
-                        Utente <input type="radio" name="tipologia" value="utenti" <?php if($tipologia=="utenti") echo "checked"?>>
-                        Bibliotecario <input type="radio" name="tipologia" value="bibliotecari" <?php if($tipologia=="bibliotecari") echo "checked"?>>
-                    </td>
-                </tr>
-            </table> -->
 
             <p>
-                Se non ti sei ancora registrato: <a href="registrazione.php"> vai alla registrazione </a> 
+                Se non ti sei ancora registrato: <a href="registrazione_studente.php"> vai alla registrazione </a> 
             </p>
         </form>
 
@@ -69,7 +81,7 @@
         <?php
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				if( empty($_POST["email"]) or empty($_POST["password"])) {
-					echo "<p> Campi lasciati vuoti </p>";
+					echo "<p>Campi lasciati vuoti</p>";
 				} else {
 					$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
 					if($conn->connect_error){
@@ -77,29 +89,26 @@
 					}
 					//echo "connessione riuscita";
 					
-                    $tabella = $_POST["tipologia"];
-					
-					$myquery = "SELECT email, password 
-								FROM $tabella 
-								WHERE email='$email'
-									AND password='$password'";
+                    $tabella = $_SESSION["tipologia"];
+                    
+                        $myquery = "SELECT email, password 
+                        FROM $tabella 
+                        WHERE email='$email'
+                            AND password='$password'";
 
-					$ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
+                        $ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
 
-					if($ris->num_rows == 0){
-						echo "<p>Utente non trovato o password errata</p>";
-						$conn->close();
-					} 
-					else {
-						$_SESSION["email"]=$email;
-                        $_SESSION["tipologia"]=$_POST["tipologia"];
-												
-						$conn->close();
-						header("location: pagine/home.php");
-
-					}
-                }
-			}
+                        if($ris->num_rows == 0){
+                            echo "<p>Utente non trovato o password errata</p>";
+                            $conn->close();
+                        } else {
+                            $_SESSION["email"]=$email;
+                                                    
+                            $conn->close();
+                            header("location: home_personale.php");
+                        }   
+                    }
+				}
 			?>	
         </p>
     </div>

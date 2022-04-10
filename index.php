@@ -71,12 +71,13 @@
 		<?php
             if(isset($_POST["tipologia"])){
 				$tabella = $_POST["tipologia"];
+				$_SESSION["tipologia"]=$_POST["tipologia"];
 
 				if($_POST["tipologia"]=="alunno"){
-					header('location: pagine/login.php');
+					header('location: pagine/login_studente.php');
 				}
 				if($_POST["tipologia"]=="professore"){
-					header('location: pagine/home_bibliotecario.php');
+					header('location: pagine/login_professore.php');
 				}
 			}
 		?>

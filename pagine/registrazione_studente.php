@@ -75,7 +75,7 @@
             </table> -->
 
             <p>
-                Se sei già registrato: <a href="login.php"> vai al login </a> 
+                Se sei già registrato: <a href="login_studente.php"> vai al login </a> 
             </p>
         </form>
 
