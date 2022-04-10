@@ -12,11 +12,11 @@
 
 body{
     font-size: 120%;
-    background-color: rgb(255, 137, 137);
+    background-color: #CC1020;
 }
 
 .header{
-    width: 30%;
+    width: 40%;
     margin: 50px auto 0px;
     color: white;
     background: red;
@@ -28,10 +28,11 @@ body{
 }
 
 form{
-    width: 30%;
+    width: 40%;
     margin: 0px auto; 
     padding: 20px;
     border: 1px solid black;
+    color: black;
     background: white;
     border-radius: 0px 0px 10px 10px;
 }
@@ -59,7 +60,7 @@ form{
     padding: 10px;
     font-size: 15px;
     color: aliceblue;
-    background-color: brown;
+    background-color: #990C18;
     border: none;
     border-radius: 5px;
 }
@@ -69,10 +70,10 @@ form{
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: red;
-	border-top: 1.5px solid red;
-	box-shadow: 1px 0px 4px black;
-	color: brown;
+	background-color: #990C18;
+	border-top: 1.5px solid brown;
+	box-shadow: 1px 0px 4px white;
+	color: white;
 	font-size: 15px;
 	text-align: center;
 	padding: 10px;
@@ -84,3 +85,18 @@ form{
     max-width: 70px;
     margin-left: 10px;
   }
+
+.contenuto {
+	width: 550px;
+	margin: auto;
+	padding: 15px;
+	text-align: center;
+    color: rgb(255, 255, 255);
+	/* background-color: white; */
+	padding-bottom: 35px;
+}
+
+.contenuto img{
+    width: 100%;
+    text-align: center;
+}
