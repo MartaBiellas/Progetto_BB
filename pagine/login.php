@@ -9,7 +9,7 @@
     if(isset($_POST["telefono"])) $telefono = $_POST["telefono"];  else $telefono = "";
     if(isset($_POST["comune"])) $comune = $_POST["comune"];  else $comune = "";
     if(isset($_POST["indirizzo"])) $indirizzo = $_POST["indirizzo"];  else $indirizzo = "";
-    if(isset($_POST["tipologia"])) $tipologia = $_POST["tipologia"];  else $tipologia = "utenti";
+    if(isset($_GET["tipologia"])) $tipologia = $_GET["tipologia"];  else $tipologia = "alunno";
 ?>
 
 <!DOCTYPE html>
@@ -78,12 +78,11 @@
 					}
 					//echo "connessione riuscita";
 					
-                    $tabella = $_POST["tipologia"];
+                    $tabella = $tipologia;
 					
 					$myquery = "SELECT email, password 
 								FROM $tabella 
-								WHERE email='$email'
-									AND password='$password'";
+								WHERE email='$email' AND password='$password'";
 
 					$ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
 
@@ -93,10 +92,10 @@
 					} 
 					else {
 						$_SESSION["email"]=$email;
-                        $_SESSION["tipologia"]=$_POST["tipologia"];
+                        $_SESSION["tipologia"]=$_GET["tipologia"];
 												
 						$conn->close();
-						header("location: pagine/home.php");
+						header("location: home.php");
 
 					}
                 }

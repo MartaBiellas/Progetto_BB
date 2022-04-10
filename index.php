@@ -73,7 +73,7 @@
 				$tabella = $_POST["tipologia"];
 
 				if($_POST["tipologia"]=="alunno"){
-					header('location: pagine/login.php');
+					header("location: pagine/login.php?tipologia=$tipologia");
 				}
 				if($_POST["tipologia"]=="professore"){
 					header('location: pagine/home_bibliotecario.php');
