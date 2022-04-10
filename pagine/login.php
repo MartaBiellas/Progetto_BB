@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../stile.css">
-    <title>Registro online - Login</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -63,51 +63,47 @@
             </p>
         </form>
 
+        <br>
+
         <p>
-            <?php
-            if(isset($_POST["username"]) and isset($_POST["password"])) {
-                if ($_POST["username"] == "" or $_POST["password"] == "") {
-                    echo "username e password non possono essere vuoti!";
-                } elseif ($_POST["password"] != $_POST["conferma"]){
-                    echo "Le password inserite non corrispondono";
-                } else {
-                    $conn = new mysqli("localhost", "root", "", "biblioteca");
-                    if($conn->connect_error){
-                        die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
-                    }
+        <?php
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				if( empty($_POST["email"]) or empty($_POST["password"])) {
+					echo "<p> Campi lasciati vuoti </p>";
+				} else {
+					$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
+					if($conn->connect_error){
+						die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
+					}
+					//echo "connessione riuscita";
+					
+                    $tabella = $_POST["tipologia"];
+					
+					$myquery = "SELECT email, password 
+								FROM $tabella 
+								WHERE email='$email'
+									AND password='$password'";
 
-                    $myquery = "SELECT username 
-						    FROM utenti 
-						    WHERE username='" . $_POST["username"] . "'";
-                    //echo $myquery;
+					$ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
 
-                    $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
-                    if ($ris->num_rows > 0) {
-                        echo "Questo username è già stato usato";
-                    } else {
+					if($ris->num_rows == 0){
+						echo "<p>Utente non trovato o password errata</p>";
+						$conn->close();
+					} 
+					else {
+						$_SESSION["email"]=$email;
+                        $_SESSION["tipologia"]=$_POST["tipologia"];
+												
+						$conn->close();
+						header("location: pagine/home.php");
 
-                        $myquery = "INSERT INTO $tipologia (username, password, nome, cognome, email, telefono, comune, indirizzo)
-                                    VALUES ('$username', '$password', '$nome', '$cognome','$email','$telefono','$comune','$indirizzo')";
-
-                        if ($conn->query($myquery) === true) {
-                            session_start();
-                            $_SESSION["username"]=$username;
-                            $_SESSION["tipologia"]=$_POST["tipologia"];
-                            
-						    $conn->close();
-
-                            echo "Registrazione effettuata con successo!<br>sarai ridirezionato alla home tra 5 secondi.";
-                            header('Refresh: 5; URL=home.php');
-
-                        } else {
-                            echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
-                        }
-                    }
+					}
                 }
-            }
-            ?>
+			}
+			?>	
         </p>
     </div>
+
     <?php 
         error_reporting(E_ALL ^ E_WARNING); // metodo globale ^ significa tranne e funziona da qui in poi
 		include('footer.php');

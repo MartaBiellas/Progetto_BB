@@ -8,15 +8,15 @@
 	// $db_username = "root";
 	// $db_password = "";
 
-	if(isset($_SESSION['username'])){
+	if(isset($_SESSION['email'])){
 		header('location: pagine/home.php');
 	}
 
-	if(isset($_POST["username"])){
-		$username = $_POST["username"];
+	if(isset($_POST["email"])){
+		$email = $_POST["email"];
 	}
 	else{
-		$username = "";
+		$email = "";
 	}
 	
 	if (isset($_POST["password"])){
@@ -37,12 +37,51 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<title>Biblioteca - Login</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Registro</title>
+	<link rel="stylesheet" type="text/css" href="stile.css">
 </head>
 
 <body>
+
 	<div class="nav">
+		<div class="centratonav">
+			<ul class="navlinks">
+				<li><a href="pagine/registrazione.php">Registrati</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="contenuto">
+		<h1>Benvenuto nel tuo registro elettronico!</h1>
+		<h2>Sei uno studente o un professore?</h2>
+		<br>
+		<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+			<td colspan="2" style="text-align: center">
+                        Studente <input type="radio" name="tipologia" value="alunno" checked>
+						<br>
+                        Professore <input type="radio" name="tipologia" value="professore">
+					<br>
+                </td>			
+				<br>
+			<p><input type="submit" value="Avanti"></p>		
+		</form>
+			
+	<img src="./img/onda_sdf_grigia.png">
+
+		<?php
+            if(isset($_POST["tipologia"])){
+				$tabella = $_POST["tipologia"];
+
+				if($_POST["tipologia"]=="alunno"){
+					header('location: pagine/login.php');
+				}
+				if($_POST["tipologia"]=="professore"){
+					header('location: pagine/home_bibliotecario.php');
+				}
+			}
+		?>
+
+<!-- 	<div class="nav">
 		<div class="centratonav">
 			<ul class="navlinks">
 				<li><a href="pagine/registrazione.php">Registrati</a></li>
@@ -102,36 +141,13 @@
 						header("location: pagine/home.php");
 
 					}
-
-					/*
-					// Versione con l'uso dell'hash
-
-					$myquery = "SELECT username, password 
-								FROM $tabella 
-								WHERE username='$username'";
-
-					$ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
-
-					if($ris->num_rows == 0 or password_verify($password, $ris->fetch_assoc()['password'])){
-						echo "<p>Utente non trovato o password errata</p>";
-						$conn->close();
-					} 
-					else {
-						$_SESSION["username"]=$username;
-                        $_SESSION["tipologia"]=$_POST["tipologia"];
-												
-						$conn->close();
-						header("location: pagine/home.php");
-					}
-					*/
-
 				}
 			}
-			?>	
-	</div>
-	<!-- <div class="footer">
-		<em>"Biblioteca Online"</em>, esempio di sito dinamico in PHP realizzato da Francesco Tormene
-	</div> -->
+			?> 	-->
+
+	</div> 
+
+
 	<?php 
 		include('pagine/footer.php')
 	?>
