@@ -1,0 +1,109 @@
+/*
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Montaga");
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Open Sans', Verdana, 'DejaVu Sans', Arial, sans-serif;
+	background-color: #ff0000;
+}
+
+.nav {
+	background-color: #d70000;
+	border-bottom: 1.5px solid #ffffff;
+	box-shadow: 0px 1px 4px #d70000;
+}
+.centratonav{
+	width: 550px;
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+	/* background-color: white; */
+}
+
+#tab_dati_personali{
+	/* width: 500px; */
+	text-align: left;
+	margin: auto;
+}
+.tab_input{
+	text-align: left;
+	margin: auto;
+}
+.input_dati_personali{
+	width: 300px;
+}
+input{
+	font-family: 'Open Sans', Verdana, 'DejaVu Sans', Arial, sans-serif;
+}
+ul.navlinks{
+	color: #b48648;
+	font-weight: bold;
+	padding-left: 0px;
+}
+ul.navlinks li {
+	display: inline;
+	margin: 10px;
+}
+ul.navlinks li#active{
+	/* color:#e8dbca; */
+	color:white;
+}
+ul.navlinks li a{
+	text-decoration: none;
+	color: #b48648;
+}
+ul.navlinks li a:hover{
+	color: white;
+}
+.hidden{
+	display: none;
+}
+
+.elenco_libri{
+	display: inline-block;
+
+	background-color: #e9dbc2;
+	border: 1.5px solid #be935b;	
+	text-align: left;
+	margin: auto;
+	padding: 15px;
+	/* padding-right: 25px; */
+	padding-top: 7.5px;
+	/* padding-bottom: 10px; */
+}
+.elenco_libri h1,h2,h3,h4{
+	text-align: center;
+}
+.elenco_libri li{
+	margin:10px;
+	margin-left: 0px;
+
+}
+#form_restituzione{
+	/* display: inline; */
+	text-align: left;
+	width: max-content;
+}
+#tabella_selezione_libri{
+	text-align: left;
+	margin: auto;
+	/* border-collapse: collapse; */
+	font-size: smaller;
+}
+#tabella_selezione_libri th, #tabella_selezione_libri td:last-child{
+	text-align: center;
+}
