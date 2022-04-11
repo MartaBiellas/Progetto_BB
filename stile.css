@@ -16,7 +16,7 @@ body{
 }
 
 .header{
-    width: 40%;
+    width: 50%;
     margin: 50px auto 0px;
     color: white;
     background: #990C18;
@@ -33,8 +33,12 @@ body{
     border-radius: 10px 10px 10px 10px;
 }
 
+table{
+    border: 1px solid black;
+}
+
 form{
-    width: 40%;
+    width: 50%;
     margin: 0px auto; 
     padding: 20px;
     border: 1px solid black;
@@ -65,7 +69,7 @@ form{
 .btn {
     padding: 10px;
     font-size: 15px;
-    color: aliceblue;
+    color: white;
     background-color: #990C18;
     border: none;
     border-radius: 5px;
@@ -93,7 +97,7 @@ form{
   }
 
 .contenuto {
-	width: 550px;
+	width: 60%;
 	margin: auto;
 	padding: 15px;
 	text-align: center;
@@ -105,4 +109,12 @@ form{
 .contenuto img{
     width: 100%;
     text-align: center;
+}
+
+.error {
+    background-color: lightcoral;
+    color:#990C18;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
 }

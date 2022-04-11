@@ -1,4 +1,3 @@
-<<<<<<< HEAD:pagine/login_studente.php
 <?php
 	session_start();
 	//echo session_id();
@@ -73,7 +72,6 @@
             <p>
                 Se non ti sei ancora registrato: <a href="registrazione_studente.php"> vai alla registrazione </a> 
             </p>
-        </form>
 
         <br>
 
@@ -99,7 +97,7 @@
                         $ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
 
                         if($ris->num_rows == 0){
-                            echo "<p>Utente non trovato o password errata</p>";
+                            echo '<p div class = "error">Attenzione: utente non trovato o password errata!</p>';
                             $conn->close();
                         } else {
                             $_SESSION["email"]=$email;
@@ -111,8 +109,9 @@
 				}
 			?>	
         </p>
+        </form>
     </div>
-
+                <br>
     <?php 
         error_reporting(E_ALL ^ E_WARNING); // metodo globale ^ significa tranne e funziona da qui in poi
 		include('footer.php');

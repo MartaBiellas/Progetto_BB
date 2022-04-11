@@ -1,13 +1,12 @@
 <?php 
-    if(isset($_POST["username"])) $username = $_POST["username"];  else $username = "";
     if(isset($_POST["password"])) $password = $_POST["password"];  else $password = "";
     if(isset($_POST["conferma"])) $conferma = $_POST["conferma"];  else $conferma = "";
     if(isset($_POST["nome"])) $nome = $_POST["nome"];  else $nome = "";
     if(isset($_POST["cognome"])) $cognome = $_POST["cognome"];  else $cognome = "";
     if(isset($_POST["email"])) $email = $_POST["email"];  else $email = "";
-    if(isset($_POST["telefono"])) $telefono = $_POST["telefono"];  else $telefono = "";
-    if(isset($_POST["comune"])) $comune = $_POST["comune"];  else $comune = "";
-    if(isset($_POST["indirizzo"])) $indirizzo = $_POST["indirizzo"];  else $indirizzo = "";
+    if(isset($_POST["data_nascita"])) $data_nascita = $_POST["data_nascita"];  else $data_nascita = "";
+    if(isset($_POST["sezione"])) $sezione = $_POST["sezione"];  else $sezione = "";
+    if(isset($_POST["anno"])) $anno = $_POST["anno"];  else $anno = "";
     if(isset($_POST["tipologia"])) $tipologia = $_POST["tipologia"];  else $tipologia = "utenti";
 ?>
 
@@ -24,15 +23,10 @@
 </head>
 
 <body>
-    <!-- <div class="nav">
-        <div class="centratonav">
-            <ul class="navlinks">
-                <li><a href="../index.php">Login</a></li>
-            </ul>
-        </div> 
-    </div> -->
 
     <div class="header">
+    <img src="../img/studenti.jpg">
+        <h1>STUDENTE</h1>
         <h2>Registrazione</h2>
     </div>  
        
@@ -43,11 +37,19 @@
         </div>
         <div class="input-group">
             <label> Cognome </label>
-            <input name="cognome" <?php echo "value = '$cognome'" ?>>
+            <input type="text" name="cognome" <?php echo "value = '$cognome'" ?>>
         </div>
         <div class="input-group">
             <label> Data di nascita </label>
-            <input type="text" name="nascita" <?php echo "value = '$data_nascita'" ?> required>
+            <input type="data" name="nascita" <?php echo "value = '$data_nascita'" ?> required>
+        </div>
+        <div class="input-group">
+            <label> Sezione </label>
+            <input type="text" name="sezione" <?php echo "value = '$sezione'" ?> required>
+        </div>
+        <div class="input-group">
+            <label> Anno </label>
+            <input type="text" name="anno" <?php echo "value = '$anno'" ?> required>
         </div>
         <div class="input-group">
             <label> Email </label>
@@ -65,14 +67,6 @@
         <div class="input-group">
             <button type="submit" name="Registrati" class="btn"> Registrati </button>
         </div>
-        
-<!--                 <tr>
-                    <td colspan="2" style="text-align: center">
-                        Utente <input type="radio" name="tipologia" value="utenti" <?php if($tipologia=="utenti") echo "checked"?>>
-                        Bibliotecario <input type="radio" name="tipologia" value="bibliotecari" <?php if($tipologia=="bibliotecari") echo "checked"?>>
-                    </td>
-                </tr>
-            </table> -->
 
             <p>
                 Se sei già registrato: <a href="login_studente.php"> vai al login </a> 
@@ -83,33 +77,33 @@
 
         <p>
             <?php
-            if(isset($_POST["username"]) and isset($_POST["password"])) {
-                if ($_POST["username"] == "" or $_POST["password"] == "") {
-                    echo "username e password non possono essere vuoti!";
+            if(isset($_POST["email"]) and isset($_POST["password"])) {
+                if ($_POST["email"] == "" or $_POST["password"] == "") {
+                    echo "email e password non possono essere vuoti!";
                 } elseif ($_POST["password"] != $_POST["conferma"]){
                     echo "Le password inserite non corrispondono";
                 } else {
-                    $conn = new mysqli("localhost", "root", "", "biblioteca");
+                    $conn = new mysqli("localhost", "root", "", "database_bb");
                     if($conn->connect_error){
                         die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
                     }
 
-                    $myquery = "SELECT username 
-						    FROM utenti 
-						    WHERE username='" . $_POST["username"] . "'";
+                    $myquery = "SELECT email 
+						    FROM alunni 
+						    WHERE email='" . $_POST["email"] . "'";
                     //echo $myquery;
 
                     $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
                     if ($ris->num_rows > 0) {
-                        echo "Questo username è già stato usato";
+                        echo "Questo profilo esiste già";
                     } else {
 
-                        $myquery = "INSERT INTO $tipologia (username, password, nome, cognome, email, telefono, comune, indirizzo)
-                                    VALUES ('$username', '$password', '$nome', '$cognome','$email','$telefono','$comune','$indirizzo')";
+                        $myquery = "INSERT INTO $tipologia (email, password, nome, cognome, data_nascita, sezione, anno)
+                                    VALUES ('$email', '$password', '$nome', '$cognome','$data_nascita','$sezione','$anno')";
 
                         if ($conn->query($myquery) === true) {
                             session_start();
-                            $_SESSION["username"]=$username;
+                            $_SESSION["email"]=$email;
                             $_SESSION["tipologia"]=$_POST["tipologia"];
                             
 						    $conn->close();

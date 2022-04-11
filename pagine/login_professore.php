@@ -92,7 +92,7 @@
                         $ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
 
                         if($ris->num_rows == 0){
-                            echo "<p>Utente non trovato o password errata</p>";
+                            echo '<p div class = "error">Attenzione: utente non trovato o password errata!</p>';
                             $conn->close();
                         } else {
                             $_SESSION["email"]=$email;
