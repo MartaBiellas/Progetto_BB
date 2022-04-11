@@ -90,19 +90,19 @@
                     if ($ris->num_rows > 0) {
                         echo "Questo profilo esiste già";
                     } else {
-
-                        $myquery = "INSERT INTO $professore (email, password, nome, cognome, data_nascita, materia)
+                        $conn->query('SET FOREIGN_KEY_CHECKS= 0;');
+                        $myquery = "INSERT INTO professore (email, password, nome, cognome, data_nascita, materia)
                                     VALUES ('$email', '$password', '$nome', '$cognome','$data_nascita','$materia')";
-
+                        $conn->query('SET FOREIGN_KEY_CHECKS= 1;');
                         if ($conn->query($myquery) === true) {
                             session_start();
                             $_SESSION["email"]=$email;
-                            $_SESSION["tipologia"]=$_POST["tipologia"];
+                            //$_SESSION["tipologia"]=$_POST["tipologia"];
                             
 						    $conn->close();
 
                             echo "Registrazione effettuata con successo!<br>sarai ridirezionato alla home tra 5 secondi.";
-                            header('Refresh: 5; URL=home.php');
+                            header('Refresh: 5; URL=home_professore.php');
 
                         } else {
                             echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;

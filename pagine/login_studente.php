@@ -103,7 +103,7 @@
                             $_SESSION["email"]=$email;
                                                     
                             $conn->close();
-                            header("location: home_personale.php");
+                            header("location: home_studente.php");
                         }   
                     }
 				}

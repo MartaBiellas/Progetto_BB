@@ -2,12 +2,12 @@
     session_start();
     //echo session_id();
     require_once('../data/dati_connessione_db.php');
-    if(!isset($_SESSION['username'])){
+    /* if(!isset($_SESSION['username'])){
         header('location: ../index.php');
     }
     if( $_SESSION["tipologia"]!="utenti"){
-        header('location: logout.php');
-    }
+        header('location: logout.php'); 
+    } */
     $username = $_SESSION["username"];
     //echo $username;
     
@@ -19,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Biblioteca - Home Personale</title>
+    <title>Profilo</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
         <div class="centratonav">
             <ul class="navlinks">
                 <li id="active">Home</li>
-                <li><a href="dati_personali.php">Dati personali</a></li>
+                <li><a href="dati_studente.php">Profilo studente</a></li>
                 <li><a href="ritira.php">Ritira</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
