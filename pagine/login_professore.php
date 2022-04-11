@@ -8,9 +8,9 @@
 	// $db_username = "root";
 	// $db_password = "";
 
-	if(isset($_SESSION['email'])){
+/* 	if(isset($_SESSION['email'])){
 		header('location: pagine/home.php');
-	}
+	} */
 
 	if(isset($_POST["email"])){
 		$email = $_POST["email"];
@@ -98,7 +98,7 @@
                             $_SESSION["email"]=$email;
                                                     
                             $conn->close();
-                            header("location: home_personale.php");
+                            header("location: home_professore.php");
                         }   
                     }
 				}

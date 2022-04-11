@@ -7,7 +7,7 @@
     if(isset($_POST["data_nascita"])) $data_nascita = $_POST["data_nascita"];  else $data_nascita = "";
     if(isset($_POST["sezione"])) $sezione = $_POST["sezione"];  else $sezione = "";
     if(isset($_POST["anno"])) $anno = $_POST["anno"];  else $anno = "";
-    if(isset($_POST["tipologia"])) $tipologia = $_POST["tipologia"];  else $tipologia = "utenti";
+    if(isset($_POST["tipologia"])) $tipologia = $_POST["tipologia"];  else $tipologia = "alunno";
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../stile.css">
-    <title>Registro online - Registrazione</title>
+    <title>Registrazione</title>
 </head>
 
 <body>
@@ -33,11 +33,11 @@
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="input-group">
             <label> Nome </label>
-            <input type="text" name="nome" <?php echo "value = '$nome'" ?>>
+            <input type="text" name="nome" <?php echo "value = '$nome'" ?> required>
         </div>
         <div class="input-group">
             <label> Cognome </label>
-            <input type="text" name="cognome" <?php echo "value = '$cognome'" ?>>
+            <input type="text" name="cognome" <?php echo "value = '$cognome'" ?> required>
         </div>
         <div class="input-group">
             <label> Data di nascita </label>
@@ -89,16 +89,16 @@
                     }
 
                     $myquery = "SELECT email 
-						    FROM alunni 
+						    FROM alunno 
 						    WHERE email='" . $_POST["email"] . "'";
-                    //echo $myquery;
+                    //echo $myquery
 
                     $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
                     if ($ris->num_rows > 0) {
                         echo "Questo profilo esiste già";
                     } else {
 
-                        $myquery = "INSERT INTO $tipologia (email, password, nome, cognome, data_nascita, sezione, anno)
+                        $myquery = "INSERT INTO alunno (email, password, nome, cognome, data_nascita, sezione, anno)
                                     VALUES ('$email', '$password', '$nome', '$cognome','$data_nascita','$sezione','$anno')";
 
                         if ($conn->query($myquery) === true) {

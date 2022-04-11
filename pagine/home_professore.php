@@ -4,12 +4,12 @@
 
 	require('../data/dati_connessione_db.php');
 
-	if(!isset($_SESSION['username'])){
+/* 	if(!isset($_SESSION['email'])){
 		header('location: ../index.php');
-	}
+	} 
 	if( $_SESSION["tipologia"]!="bibliotecari"){
         header('location: logout.php');
-    }
+    } */
 	$username = $_SESSION["username"];
 	//echo $username;
 	
