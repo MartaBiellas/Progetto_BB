@@ -49,7 +49,7 @@
 			<br>
 		</div>
 		<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-			<table>
+			<table id="tab_index">
 				<tr>
 					<td width = "50%" >Studente <input type="radio" name="tipologia" value="alunno" checked> </td> 
 					<td width = "50%" >Professore <input type="radio" name="tipologia" value="professore"></td> 

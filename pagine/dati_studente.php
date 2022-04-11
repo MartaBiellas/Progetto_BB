@@ -11,7 +11,7 @@
 	    header('location: logout.php');
 	} */
 
-	$username = $_SESSION["username"];
+	$email = $_SESSION["email"];
 	//echo $username;
 
 	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
@@ -20,15 +20,15 @@
 		if($_POST["modifica"]==true) {
 			$modifica = true;
 		} else {
-			$sql = "UPDATE utenti
+			$sql = "UPDATE alunno
 					SET password = '".$_POST["password"]."', 
 						nome = '".$_POST["nome"]."', 
 						cognome = '".$_POST["cognome"]."', 
 						email = '".$_POST["email"]."', 
-						telefono = '".$_POST["telefono"]."', 
-						comune = '".$_POST["comune"]."', 
-						indirizzo = '".$_POST["indirizzo"]."' 
-					WHERE username = '".$username."'";
+						data_nascita = '".$_POST["data_nascita"]."', 
+						sezione = '".$_POST["sezione"]."', 
+						anno = '".$_POST["anno"]."' 
+					WHERE email = '".$email."'";
 			if($conn->query($sql) === true) {
 				//echo "Record updated successfully";
 			} else {
@@ -44,64 +44,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<title>Biblioteca - Dati personali</title>
-	<link rel="stylesheet" type="text/css" href="../style.css">
+	<title>Dati personali</title>
+	<link rel="stylesheet" type="text/css" href="../stile.css">
 </head>
+
 <body>
 	<div class="nav">
 		<div class="centratonav">
 			<ul class="navlinks">
-				<li><a href="home_personale.php">Home</a></li>
+				<li><a href="home_studente.php">Home</a></li>
 				<li id="active">Dati personali</li>
-				<li><a href="ritira.php">Ritira</a></li>
-				<li><a href="riconsegna.php">Riconsegna</a></li>
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>
 	</div>
-	<div class="contenuto">
-		<h1>Dati Personali</h1>
+
+	<div class="header">
+		<img src="../img/profilo.jpg">
+		<h1>STUDENTE</h1>
+    </div> 
+		
 		<?php
-			$sql = "SELECT username, password, nome, cognome, email, telefono, comune, indirizzo 
-				FROM utenti 
-				WHERE username='".$username."'";
+			$sql = "SELECT email, password, nome, cognome, data_nascita, sezione, anno 
+				FROM alunno 
+				WHERE email='".$email."'";
 			//echo $sql;
 			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
 			$row = $ris->fetch_array(MYSQLI_ASSOC);
 		?>
 		<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-			<table id="tab_dati_personali">
-				<tr>
-					<td>Username:</td> <td><input class="input_dati_personali" type="text" name="username" value="<?php echo $row["username"]; ?>" disabled="disabled"></td>
+		<table id="tab_dati_personali">
+				<tr>	
+					<td><div class="input-group"><label> Nome </label></div></td>
+					<td><div class="input-group"><input type="text" name="nome" value="<?php echo $row["nome"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
-				<tr>
-					<td>Password:</td> <td><input class="input_dati_personali" type="text" name="password" value="<?php echo $row["password"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+
+				<tr>	
+					<td><div class="input-group"><label> Cognome </label></div></td>
+					<td><div class="input-group"><input type="text" name="cognome" value="<?php echo $row["cognome"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
-				<tr>
-					<td>Nome:</td> <td><input class="input_dati_personali" type="text" name="nome" value="<?php echo $row["nome"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+
+				<tr>	
+					<td><div class="input-group"><label> Email </label></div></td>
+					<td><div class="input-group"><input type="text" name="email" value="<?php echo $row["email"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
-				<tr>
-					<td>Cognome:</td> <td><input type="text" class="input_dati_personali" name="cognome" value="<?php echo $row["cognome"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+
+				<tr>	
+					<td><div class="input-group"><label> Password </label></div></td>
+					<td><div class="input-group"><input type="text" name="password" value="<?php echo $row["password"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
-				<tr>
-					<td>Email:</td> <td><input type="text" class="input_dati_personali" name="email" value="<?php echo $row["email"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+
+				<tr>	
+					<td><div class="input-group"><label> Data nascita </label></div></td>
+					<td><div class="input-group"><input type="data" name="data" value="<?php echo $row["data_nascita"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
-				<tr>
-					<td>Telefono:</td> <td><input type="text" class="input_dati_personali" name="telefono" value="<?php echo $row["telefono"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+
+				<tr>	
+					<td><div class="input-group"><label> Sezione </label></div></td>
+					<td><div class="input-group"><input type="text" name="sezione" value="<?php echo $row["sezione"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
-				<tr>
-					<td>Comune:</td> <td><input type="text" class="input_dati_personali" name="comune" value="<?php echo $row["comune"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
-				</tr>
-				<tr>
-					<td>Indirizzo:</td> <td><input type="text" class="input_dati_personali" name="indirizzo" value="<?php echo $row["indirizzo"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></td>
+
+				<tr>	
+					<td><div class="input-group"><label> Anno </label></div></td>
+					<td><div class="input-group"><input type="text" name="anno" value="<?php echo $row["anno"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
 			</table>
 			<p style="text-align: center">
+				<br>
 				<input class="hidden" type="text" name="modifica" value="<?php if($modifica==false) echo 'true'; else echo ''; ?>">
-				<input type="submit" value="<?php if($modifica==false) echo 'Modifica'; else echo 'Conferma'; ?>">
+				<input type="submit" class="btn" value="<?php if($modifica==false) echo 'Modifica'; else echo 'Conferma'; ?>">
 			</p>
 		</form>	
-	</div>	
+		<br><br>	
 	<?php 
 		include('footer.php')
 	?>

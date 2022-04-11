@@ -71,17 +71,14 @@
             <p>
                 Se sei già registrato: <a href="login_studente.php"> vai al login </a> 
             </p>
-        </form>
-
-<br>
-
+    <br>
         <p>
             <?php
             if(isset($_POST["email"]) and isset($_POST["password"])) {
                 if ($_POST["email"] == "" or $_POST["password"] == "") {
-                    echo "email e password non possono essere vuoti!";
+                    echo '<p div class = "error"> email e password non possono essere vuoti! <p>';
                 } elseif ($_POST["password"] != $_POST["conferma"]){
-                    echo "Le password inserite non corrispondono";
+                    echo '<p div class = "error"> Le password inserite non corrispondono<p>';
                 } else {
                     $conn = new mysqli("localhost", "root", "", "database_bb");
                     if($conn->connect_error){
@@ -95,7 +92,7 @@
 
                     $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
                     if ($ris->num_rows > 0) {
-                        echo "Questo profilo esiste già";
+                        echo '<p div class = "error">Questo profilo esiste già</p>';
                     } else {
                         $conn->query('SET FOREIGN_KEY_CHECKS= 0;');
                         $myquery = "INSERT INTO alunno (email, password, nome, cognome, data_nascita, sezione, anno)
@@ -108,7 +105,7 @@
                             
 						    $conn->close();
 
-                            echo "Registrazione effettuata con successo!<br>sarai ridirezionato alla home tra 5 secondi.";
+                            echo '<p div class = "ok"> Registrazione effettuata con successo!<br>Sarai ridirezionato alla home tra 5 secondi.</p>';
                             header('Refresh: 5; URL=home_studente.php');
 
                         } else {
@@ -119,6 +116,8 @@
             }
             ?>
         </p>
+        </form>
+        <br><br>
     </div>
     <?php 
         error_reporting(E_ALL ^ E_WARNING); // metodo globale ^ significa tranne e funziona da qui in poi

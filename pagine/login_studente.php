@@ -41,14 +41,7 @@
 </head>
 
 <body>
-    <!-- <div class="nav">
-        <div class="centratonav">
-            <ul class="navlinks">
-                <li><a href="../index.php">Login</a></li>
-            </ul>
-        </div> 
-    </div> -->
-
+    
     <div class="header">
         <img src="../img/studenti.jpg">
         <h1>STUDENTE</h1>
