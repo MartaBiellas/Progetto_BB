@@ -1,12 +1,12 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['username'])){
+	if(!isset($_SESSION['email'])){
 		header('location: ../index.php');
 	}
-	if($_SESSION["tipologia"]=="utenti"){
-		header('location: home_personale.php');
+	if($_SESSION["tipologia"]=="alunno"){
+		header('location: home_studente.php');
 	}
-	if($_SESSION["tipologia"]=="bibliotecari"){
-		header('location: home_bibliotecario.php');
+	if($_SESSION["tipologia"]=="professore"){
+		header('location: home_professore.php');
 	}
 ?>
