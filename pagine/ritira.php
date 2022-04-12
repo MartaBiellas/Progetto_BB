@@ -42,7 +42,7 @@
 		<div class="centratonav">
 			<ul class="navlinks">
 				<li><a href="home_personale.php">Home</a></li>
-				<li><a href="dati_personali.php">Dati personali</a></li>
+				<li><a href="dati_professore.php">Dati personali</a></li>
 				<li id="active">Ritira</li>
 				<li><a href="riconsegna.php">Riconsegna</a></li>
 				<li><a href="logout.php">Logout</a></li>

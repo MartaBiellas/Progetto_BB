@@ -41,10 +41,10 @@
 	<div class="nav">
 		<div class="centratonav">
 			<ul class="navlinks">
-				<li><a href="home_personale.php">Home</a></li>
-				<li><a href="dati_personali.php">Dati personali</a></li>
-				<li><a href="ritira.php">Ritira</a></li>
-				<li id="active">Riconsenga</li>
+				<li><a href="home_professore.php">Home Classi</a></li>
+				<li><a href="dati_professore.php">Dati personali</a></li>
+				<!-- <li><a href="ritira.php">Ritira</a></li> -->
+				<!-- <li id="active">assegna voti</li> -->
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>

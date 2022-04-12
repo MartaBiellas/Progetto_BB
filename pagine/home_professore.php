@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Professore - Home Professore</title>
-	<link rel="stylesheet" type="text/css" href="../stile1.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
 	<div class="nav">
@@ -33,7 +33,7 @@
 				<li id="active">Home</li>
 				<li><a href="dati_professore.php">Profilo</a></li>
 				<!-- <li><a href="ritira.php">Ritira</a></li> -->
-				<li><a href="riconsegna.php">Riconsegna</a></li>
+				<!-- <li><a href="riconsegna.php">Riconsegna</a></li> -->
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>

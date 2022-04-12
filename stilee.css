@@ -1,0 +1,203 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body{
+    font-size: 120%;
+    background-color: #CC1020;
+}
+
+.header{
+    width: 50%;
+    margin: 50px auto 0px;
+    color: white;
+    background: #990C18;
+    text-align: center;
+    border: 1px solid black;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+}
+
+.header img{
+    width: 50%;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#tab_index{
+    border: 1px solid black;
+}
+
+form{
+    width: 50%;
+    margin: 0px auto; 
+    padding: 20px;
+    border: 1px solid black;
+    color: black;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.input-group{
+    margin: 10px 0px 10px 0px;
+}
+
+.input-group label {
+    display: block;
+    text-align: left;
+    margin: 3px;
+}
+
+.input-group input {
+    height: 30px;
+    width: 93%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.btn {
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    background-color: #990C18;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer {
+	/* position: fixed; */
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #990C18;
+	border-top: 1.5px solid brown;
+	box-shadow: 1px 0px 4px white;
+	color: white;
+	font-size: 15px;
+	text-align: center;
+	padding: 10px;
+}
+
+.footer img{
+    text-align: right;
+    height: 50px;
+    max-width: 70px;
+    margin-left: 10px;
+  }
+
+.contenuto {
+	width: 60%;
+	margin: auto;
+	padding: 15px;
+	text-align: center;
+    color: rgb(255, 255, 255);
+	/* background-color: white; */
+	padding-bottom: 35px;
+}
+
+.contenuto img{
+    width: 100%;
+    text-align: center;
+}
+
+.error {
+    background-color: lightcoral;
+    color:#990C18;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+}
+
+.ok {
+    background-color: lightgreen;
+    color: darkgreen;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+}
+
+/* pagina dello studente */
+
+.nav {
+	background-color: #990C18;
+	border-bottom: 1.5px solid white;
+	box-shadow: 0px 1px 4px white;
+}
+.centratonav{
+	width: 550px;
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+	/* background-color: white; */
+}
+
+#tab_dati_personali{
+	width: 90%;
+	text-align: left;
+	margin: auto;
+}
+.tab_input{
+	text-align: left;
+	margin: auto;
+}
+.input_dati_personali{
+	width: 300px;
+}
+input{
+	font-family: 'Open Sans', Verdana, 'DejaVu Sans', Arial, sans-serif;
+}
+ul.navlinks{
+	color: lightcoral;
+	font-weight: bold;
+	padding-left: 0px;
+}
+ul.navlinks li {
+	display: inline;
+	margin: 10px;
+}
+ul.navlinks li#active{
+	/* color:#e8dbca; */
+	color:white;
+}
+ul.navlinks li a{
+	text-decoration: none;
+	color: lightcoral;
+}
+ul.navlinks li a:hover{
+	color: white;
+}
+.hidden{
+	display: none;
+}
+
+.elenco_libri{
+	display: inline-block;
+
+	background-color: #e9dbc2;
+	border: 1.5px solid #be935b;	
+	text-align: left;
+	margin: auto;
+	padding: 15px;
+	/* padding-right: 25px; */
+	padding-top: 7.5px;
+	/* padding-bottom: 10px; */
+}
+.elenco_libri h1,h2,h3,h4{
+	text-align: center;
+}
+.elenco_libri li{
+	margin:10px;
+	margin-left: 0px;
+
+}
