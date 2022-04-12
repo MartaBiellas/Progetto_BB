@@ -2,12 +2,12 @@
     session_start();
     //echo session_id();
     require_once('../data/dati_connessione_db.php');
-    /* if(!isset($_SESSION['username'])){
+    if(!isset($_SESSION['email'])){
         header('location: ../index.php');
     }
-    if( $_SESSION["tipologia"]!="utenti"){
+    if( $_SESSION["tipologia"]!="alunno"){
         header('location: logout.php'); 
-    } */
+    } 
     $email = $_SESSION["email"];
     //echo $username;
     

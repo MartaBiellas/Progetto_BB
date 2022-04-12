@@ -4,13 +4,13 @@
 
 	require('../data/dati_connessione_db.php');
 
- 	/* if(!isset($_SESSION['email'])){
+ 	if(!isset($_SESSION['email'])){
 		header('location: ../index.php');
 	} 
-	if( $_SESSION["tipologia"]!="bibliotecari"){
+	if( $_SESSION["tipologia"]!="professore"){
         header('location: logout.php');
-    }  */
-	$username = $_SESSION["username"];
+    } 
+	$email = $_SESSION["email"];
 	//echo $username;
 	
 	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);

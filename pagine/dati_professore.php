@@ -4,10 +4,10 @@
 
 	require('../data/dati_connessione_db.php');
 
-/* 	if(!isset($_SESSION['email'])){
+	if(!isset($_SESSION['email'])){
 		header('location: ../index.php');
 	}
-	if( $_SESSION["tipologia"]!="utenti"){
+	if( $_SESSION["tipologia"]!="professore"){
 	    header('location: logout.php');
 	} */
 
