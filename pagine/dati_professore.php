@@ -9,7 +9,7 @@
 	}
 	if( $_SESSION["tipologia"]!="professore"){
 	    header('location: logout.php');
-	} */
+	} 
 
 	$email = $_SESSION["email"];
 	//echo $username;
