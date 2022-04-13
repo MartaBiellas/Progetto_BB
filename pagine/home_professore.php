@@ -38,25 +38,39 @@
 			</ul>
 		</div>
 	</div>
-	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+	
 	<div class="contenuto-altro">
 		<h1 style="text-align: center; margin-top: 0px">ELENCO CLASSI PROFESSORE</h1>
 	</div>
 	
+	
 	<div class="contenuto">
 		<?php
-			$sql = "SELECT email, nome, cognome 
-					FROM alunno 
-					WHERE email='".$email."'";
-			//echo $sql;
+			$sql = "
+			SELECT *
+			FROM professore
+			WHERE professore.email ='".$email."'";
+			
 			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
-			foreach($ris as $riga){
-				echo "<p>Benvenuto <b>".$riga["nome"]." ".$riga["cognome"]."</b></p>";
-			}
+			
+			$riga = $ris->fetch_assoc();
+			echo "<p>Benvenuto <b>".$riga["nome"]." ".$riga["cognome"]."</b><br></p>";
 
+			$sql = "
+			SELECT *
+			FROM insegna_in JOIN professore ON insegna_in.matricola_professore = professore.matricola
+			WHERE professore.email ='".$email."'";
+			//echo $sql;
+
+			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");	
+			while($riga = $ris->fetch_assoc()){
+				echo "<br><p><b>".$riga["anno"]." ".$riga["sezione"]."</b></p>";	
+			}
 		?>
 		
 	</div>
+	<br>
+	<br>
 	<?php 
 		include('footer.php')
 	?>
