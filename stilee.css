@@ -66,6 +66,10 @@ form{
     border: 1px solid grey;
 }
 
+.paragrafo {
+	text-align: center;
+	color: black;
+}
 .btn {
     padding: 10px;
     font-size: 15px;
@@ -97,13 +101,16 @@ form{
   }
 
 .contenuto {
-	width: 60%;
+	width: 40%;
+	height: fit-content;
 	margin: auto;
-	padding: 15px;
+	padding: 20px;
 	text-align: center;
-    color: rgb(255, 255, 255);
+    color: black;
 	background-color: white; 
 	padding-bottom: 35px;
+	border: solid black 3px;
+	border-radius: 20px;
 }
 
 .contenuto-altro {
@@ -157,6 +164,13 @@ form{
 	text-align: left;
 	margin: auto;
 }
+
+#tab_dati_prof{
+	width: 90%;
+	text-align: center;
+	margin: auto;
+}
+
 .tab_input{
 	text-align: left;
 	margin: auto;
