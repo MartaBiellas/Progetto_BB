@@ -96,7 +96,7 @@
 
 				<tr>	
 					<td><div class="input-group"><label> Data nascita </label></div></td>
-					<td><div class="input-group"><input type="data" name="data" value="<?php echo $row["data_nascita"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
+					<td><div class="input-group"><input type="data" name="data_nascita" value="<?php echo $row["data_nascita"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
 
 				<tr>	

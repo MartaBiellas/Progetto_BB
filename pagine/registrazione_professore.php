@@ -38,7 +38,7 @@
         </div>
         <div class="input-group">
             <label> Data di nascita </label>
-            <input type="data" name="nascita" <?php echo "value = '$data_nascita'" ?> required>
+            <input type="data" name="data_nascita" <?php echo "value = '$data_nascita'" ?> required>
         </div>
         <div class="input-group">
             <label> Materia </label>

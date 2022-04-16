@@ -49,7 +49,10 @@
                 echo "<p><b>".$riga["nome"]." ".$riga["cognome"]."</b></p>";
             }
         ?>
-       <div class="elenco_libri">
+
+<!-- Parte voti stampati male -->
+
+        <div class="elenco_libri">
             <h2>Voti</h2>
             <?php
                 $sql = "SELECT voto.valutazione, voto.tipo, voto.data, voto.materia 
@@ -60,6 +63,7 @@
                     echo "<p style='text-align:center'>Nessuno";
                 }
             ?>
+
             <ol>
                 <?php
                     foreach($ris as $riga){
@@ -71,8 +75,70 @@
                 ?>      
             </ol>
         </div>
-            
     </div>
+        
+<!-- Parte voti javascript -->       
+
+        
+        <!-- eventuale chiusura </head>, apertura <body> -->
+
+        <?php
+            $sql = "SELECT materia
+                    FROM alunno JOIN voto ON alunno.matricola = voto.matricola_alunno 
+                    WHERE email='$email'
+                    GROUP BY materia";
+            $ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+            if ($ris->num_rows == 0) {
+                echo "<p style='text-align:center'>Nessuno";
+            }   
+        ?>
+
+        <?php  
+            $incremento = 0; 
+            while($riga1 = $ris->fetch_assoc()){  
+                echo $riga1["materia"];  
+                $sql = "SELECT voto.valutazione, voto.tipo, voto.data, voto.materia 
+                        FROM alunno JOIN voto ON alunno.matricola = voto.matricola_alunno  
+                        WHERE email ='$email' AND materia ='$riga1[materia]'"; 
+                $ris1 = $conn->query($sql) or die("<p>Query fallita!</p>");
+                echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                        <script>
+                        $(document).ready(function(){
+                            $("#menuButton'.$incremento.'").click(function(){
+                            $("#menu'.$incremento.'").slideToggle();
+                            }); 
+                        });
+                        </script>';
+               
+                $sql = "SELECT AVG(valutazione) AS media
+                        FROM alunno JOIN voto ON alunno.matricola = voto.matricola_alunno 
+                        WHERE email='$email' AND materia = '$riga1[materia]'";
+                $ris2 = $conn->query($sql) or die("<p>Query fallita!</p>");
+
+                $tmp = $ris2->fetch_assoc(); 
+                echo '<button id="menuButton'.$incremento.'"> '.$tmp["media"].' </button>';
+                echo "<p> <br> </p>"; 
+                echo '<div id="menu'.$incremento.'" style="display:none;">';
+
+                if ($ris1->num_rows == 0) {
+                    echo '<p> Nessuno </p>';
+                }else{
+                    echo "<ul>";
+                    while($riga = $ris1->fetch_assoc())
+                    {
+                        echo "<li>";
+                        echo $riga["valutazione"]." - ".$riga["tipo"]." ".$riga["data"]." ".$riga["materia"];
+                        echo "</li>";
+                    }
+                    echo "</ul>";
+                }
+                $incremento = $incremento + 1;
+                $ris1 = null;
+                $ris2 = null;
+                echo "</div>";
+            }     
+        ?>
+    
     <?php 
 	    include('footer.php');
     ?>  

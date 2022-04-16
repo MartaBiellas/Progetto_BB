@@ -25,7 +25,7 @@
 						nome = '".$_POST["nome"]."', 
 						cognome = '".$_POST["cognome"]."', 
 						email = '".$_POST["email"]."', 
-						data_nascita = '".$_POST["data_nascita"]."', 
+						data_nascita = '".$_POST["data"]."', 
 						sezione = '".$_POST["sezione"]."', 
 						anno = '".$_POST["anno"]."' 
 					WHERE email = '".$email."'";
@@ -96,7 +96,7 @@
 
 				<tr>	
 					<td><div class="input-group"><label> Data nascita </label></div></td>
-					<td><div class="input-group"><input type="data" name="data" value="<?php echo $row["data_nascita"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
+					<td><div class="input-group"><input type="data" name="data_nascita" value="<?php echo $row["data_nascita"]; ?>" <?php if(!$modifica) echo "disabled='disabled'"?>></div></td>
 				</tr>
 
 				<tr>	
