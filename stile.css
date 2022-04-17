@@ -181,23 +181,22 @@ ul.navlinks li a:hover{
 	display: none;
 }
 
-.elenco_libri{
-	display: inline-block;
-
-	background-color: #e9dbc2;
-	border: 1.5px solid #be935b;	
-	text-align: left;
-	margin: auto;
-	padding: 15px;
-	/* padding-right: 25px; */
-	padding-top: 7.5px;
-	/* padding-bottom: 10px; */
+.elenco_voti{
+    width: 50%;
+    margin: 0px auto; 
+    padding: 20px;
+    border: 1px solid black;
+    color: black;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
 }
-.elenco_libri h1,h2,h3,h4{
-	text-align: center;
-}
-.elenco_libri li{
-	margin:10px;
-	margin-left: 0px;
 
+
+.btn1 {
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    background-color: darkgreen;
+    border: none;
+    border-radius: 55px;
 }
