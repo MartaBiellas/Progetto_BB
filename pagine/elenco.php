@@ -37,7 +37,42 @@
 			</ul>
 		</div>
 	</div>
+	<div class="contenuto-altro">
+    <h1 style="text-align: center; margin-top: 0px">
+    <?php
+			$sql = "
+            SELECT nome, cognome, anno, sezione
+            FROM alunno
+            WHERE alunno.sezione= 'A' AND alunno.anno = '1'";
+
+			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+           
+            $riga = $ris->fetch_assoc();
+			echo "<p>Classe: <b>".$riga["anno"]." ".$riga["sezione"]."</b><br></p>";
+			
+		?>
+        </h1>
+	</div>
 	
+	
+	<div class="contenuto">
+		<?php
+			$sql = "
+            SELECT nome, cognome, anno, sezione
+            FROM alunno
+            WHERE alunno.sezione= 'A' AND alunno.anno = '1'";
+
+			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+           
+			while($riga = $ris->fetch_assoc()){
+				echo "<br><p><b>".$riga["nome"]." ".$riga["cognome"]."</b></p>";	
+			}
+			
+		?>
+		
+	</div>
+	<br>
+	<br>
 	
 	<?php 
 		include('footer.php')

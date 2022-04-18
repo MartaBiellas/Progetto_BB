@@ -38,7 +38,40 @@
 		</div>
 	</div>
 	
-	
+	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+			<table id="tab_index">
+				<tr>
+					<td>Nome:</td> <td><input type="text" name="nome" value="<?php echo $nome; ?>" required></td>
+				</tr>
+				<tr>
+					<td>Password:</td> <td><input type="text" name="cognome" value="<?php echo $cognome; ?>" required></td>
+				</tr>
+				<tr>
+					<td width = "50%" >Orale <input type="radio" name="tipologia" value="alunno" checked> </td> 
+					<td width = "50%" >Scritto <input type="radio" name="tipologia" value="professore"></td> 
+				</tr>
+			</table>
+
+		<div class="input-group">
+            <button type="submit" value="Avanti" class="btn"> assegna voto </button>
+		</div>
+		</form>
+
+
+		<?php
+            if(isset($_POST["tipologia"])){
+				$tabella = $_POST["tipologia"];
+				$_SESSION["tipologia"]=$_POST["tipologia"];
+
+				if($_POST["tipologia"]=="alunno"){
+					header('location: pagine/login_studente.php');
+				}
+				if($_POST["tipologia"]=="professore"){
+					header('location: pagine/login_professore.php');
+				}
+			}
+		?>
+		
 	<?php 
 		include('footer.php')
 	?>

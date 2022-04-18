@@ -119,7 +119,10 @@ form{
 	padding: 15px;
 	text-align: center;
     color: rgb(255, 255, 255);
-	padding-bottom: 5px;
+	padding-bottom: 5px; 
+	margin-top: 0px;
+	text-size-adjust: 20px;
+
 }
 
 .contenuto img{
