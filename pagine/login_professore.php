@@ -66,7 +66,7 @@
             <p>
                 Se non ti sei ancora registrato: <a href="registrazione_professore.php"> vai alla registrazione </a> 
             </p>
-        </form>
+    </form>
 
         <br>
 
