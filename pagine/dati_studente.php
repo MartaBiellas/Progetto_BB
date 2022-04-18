@@ -25,7 +25,7 @@
 						nome = '".$_POST["nome"]."', 
 						cognome = '".$_POST["cognome"]."', 
 						email = '".$_POST["email"]."', 
-						data_nascita = '".$_POST["data"]."', 
+						data_nascita = '".$_POST["data_nascita"]."',
 						sezione = '".$_POST["sezione"]."', 
 						anno = '".$_POST["anno"]."' 
 					WHERE email = '".$email."'";

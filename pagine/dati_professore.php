@@ -21,13 +21,13 @@
 			$modifica = true;
 		} else {
 			$sql = "UPDATE professore
-			SET password = '".$_POST["password"]."', 
-				nome = '".$_POST["nome"]."', 
-				cognome = '".$_POST["cognome"]."', 
-				email = '".$_POST["email"]."', 
-				data_nascita = '".$_POST["data_nascita"]."', 
-				materia = '".$_POST["materia"]."', 
-			WHERE email = '".$email."'";
+					SET password = '".$_POST["password"]."', 
+						nome = '".$_POST["nome"]."', 
+						cognome = '".$_POST["cognome"]."', 
+						email = '".$_POST["email"]."', 
+						data_nascita = '".$_POST["data_nascita"]."', 
+						materia = '".$_POST["materia"]."', 
+					WHERE email = '".$email."'";
 			if($conn->query($sql) === true) {
 				//echo "Record updated successfully";
 			} else {

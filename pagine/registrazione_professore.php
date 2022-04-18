@@ -83,7 +83,7 @@
 						    WHERE email='" . $_POST["email"] . "'";
                     //echo $myquery; ERRORE QUI anche se query corretta
 
-                    $ris = $conn->query($myquery) or die('<p div class = "error">Query fallita!</p>');
+                    $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
                     if ($ris->num_rows > 0) {
                         echo '<p div class = "error">Questo profilo esiste già</p>';
                     } else {
