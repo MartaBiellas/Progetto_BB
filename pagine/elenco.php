@@ -4,6 +4,25 @@
 
 	require('../data/dati_connessione_db.php');
 
+	if(isset($_GET['classe']) && !empty($_GET['classe'])){ 
+		
+		$stringa = urldecode ($_GET['classe']);
+
+		$chiavi = explode("_",$stringa);
+
+		$anno = intval($chiavi[0]);
+
+		$_SESSION['anno']=$anno;
+
+		$sezione = $chiavi[1];
+
+		$_SESSION['sezione']=$sezione;
+	
+	}else{
+		$anno= $_SESSION['anno'];
+		$sezione=$_SESSION['sezione'];
+	}
+
  	if(!isset($_SESSION['email'])){
 		header('location: ../index.php');
 	} 
@@ -41,14 +60,14 @@
     <h1 style="text-align: center; margin-top: 0px">
     <?php
 			$sql = "
-            SELECT nome, cognome, anno, sezione
-            FROM alunno
-            WHERE alunno.sezione= 'A' AND alunno.anno = '1'";
+            SELECT *
+            FROM classe
+            WHERE classe.sezione= '$sezione' AND classe.anno = '$anno'";
 
 			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
            
             $riga = $ris->fetch_assoc();
-			echo "<p>Classe: <b>".$riga["anno"]." ".$riga["sezione"]."</b><br></p>";
+			echo '<p>Classe: <b>'.$riga["anno"].' '.$riga["sezione"].'</b><br></p>';
 			
 		?>
         </h1>
@@ -58,9 +77,9 @@
 	<div class="contenuto">
 		<?php
 			$sql = "
-            SELECT nome, cognome, anno, sezione
+            SELECT *
             FROM alunno
-            WHERE alunno.sezione= 'A' AND alunno.anno = '1'";
+            WHERE alunno.sezione= '$sezione' AND alunno.anno = '$anno'";
 
 			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
            

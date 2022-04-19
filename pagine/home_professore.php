@@ -64,7 +64,7 @@
 
 			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");	
 			while($riga = $ris->fetch_assoc()){
-				echo "<a href=\"./elenco.php\"><br><p><b>".$riga["anno"]." ".$riga["sezione"]."</b></p></a>";	
+				echo '<a href="./elenco.php?classe='.$riga["anno"].'_'.$riga["sezione"].'"><br><p><b>'.$riga["anno"].' '.$riga["sezione"].'</b></p></a>';	
 			}
 		?>
 		

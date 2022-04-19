@@ -2,8 +2,6 @@
 	session_start();
 	//echo session_id();
 
-	require('../data/dati_connessione_db.php');
-
  	if(!isset($_SESSION['email'])){
 		header('location: ../index.php');
 	} 
@@ -12,8 +10,6 @@
     } 
 	$email = $_SESSION["email"];
 	//echo $username;
-	
-	$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
 ?>
 
 <!DOCTYPE html>
@@ -39,15 +35,19 @@
 	</div>
 	<br>
 	<br>
-	
+
 	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="input-group">
             <label> Nome </label>
-            <input type="text" name="nome" <?php echo "value = '$nome'" ?> required>
+            <input type="text" name="nome" required>
         </div>       
         <div class="input-group">
             <label> Cognome </label>
-            <input type="password" name="cognome" <?php echo "value = '$cognome'" ?> required>
+            <input type="text" name="cognome" required>
+        </div>
+		<div class="input-group">
+            <label> Voto </label>
+            <input type="number" min="2" max="10" name="voto" required>
         </div>
 		<table id="tab_index">
 				<tr>
@@ -61,37 +61,60 @@
         </div>
 
     </form>
-
+	
         <p>
         <?php
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				if( empty($_POST["email"]) or empty($_POST["password"])) {
+				if( empty($_POST["nome"]) or empty($_POST["cognome"])) {
 					echo "<p>Campi lasciati vuoti</p>";
 				} else {
+					require('../data/dati_connessione_db.php');
 					$conn = new mysqli($db_servername,$db_username,$db_password,$db_name);
 					if($conn->connect_error){
 						die("<p>Connessione al server non riuscita: ".$conn->connect_error."</p>");
 					}
 					//echo "connessione riuscita";
 					
-                    $tabella = $_SESSION["tipologia"];
                     
-                        $myquery = "SELECT email, password 
-                        FROM $tabella 
-                        WHERE email='$email'
-                            AND password='$password'";
+                        $myquery = "
+						SELECT * 
+                        FROM professore 
+                        WHERE email='$email'";
 
                         $ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
 
-                        if($ris->num_rows == 0){
-                            echo '<p div class = "error">Attenzione: utente non trovato o password errata!</p>';
-                            $conn->close();
-                        } else {
-                            $_SESSION["email"]=$email;
-                                                    
-                            $conn->close();
-                            header("location: home_professore.php");
-                        }   
+						$professore=$ris->fetch_assoc();
+
+						$nome = $_POST['nome'];
+						
+						$cognome = $_POST['cognome'];
+						
+						$myquery = "
+						SELECT *
+						FROM alunno
+						WHERE nome = '$nome' AND cognome='$cognome'";
+						
+						$ris = $conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>");
+						
+						$alunno=$ris->fetch_assoc();
+
+						$myquery = "
+						INSERT INTO voto (materia, data, tipo, valutazione, matricola_alunno, matricola_professore)
+
+						VALUES ('".$professore['materia']."','".date("Y-m-d", time())."','".$_POST['tipologia']."', '".$_POST['voto']."', '".$alunno['matricola']."', '".$professore['matricola']."')
+
+						";
+
+						$conn->query('SET FOREIGN_KEY_CHECKS=0;');
+
+						$conn->query($myquery) or die("<p>Query fallita! ".$conn->error."</p>"); 
+						
+						$conn->query('SET FOREIGN_KEY_CHECKS=1;');
+						
+						$conn->close();
+
+						
+
                     }
 				}
 			?>	
@@ -103,6 +126,3 @@
 	?>
 </body>
 </html>
-<?php
-	$conn->close();
-?>
