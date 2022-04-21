@@ -33,6 +33,12 @@ body{
     border-radius: 10px 10px 10px 10px;
 }
 
+.immagine {
+    width: 20%;
+    text-align: left;
+    border-radius: 10px 10px 10px 10px;
+}
+
 #tab_index{
     border: 1px solid black;
 }

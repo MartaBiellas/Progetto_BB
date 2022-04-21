@@ -111,6 +111,11 @@ form{
     text-align: center;
 }
 
+.immagine {
+    width: 10%;
+    text-align: left;
+}
+
 .error {
     background-color: lightcoral;
     color:#990C18;

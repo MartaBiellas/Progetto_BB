@@ -43,7 +43,12 @@
 
 <body>
 
+
     <div class="header">
+        <div class="immagine">
+            <a href="../index.php"><img src="../img/freccia.png"></a>
+        </div>
+        
         <img src="../img/prof.jpg">
         <h1>PROFESSORE</h1>
         <h2>Login</h2>
