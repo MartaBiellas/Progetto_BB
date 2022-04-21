@@ -27,7 +27,7 @@
         <div class="centratonav">
             <ul class="navlinks">
                 <li id="active">Home</li>
-                <li><a href="dati_studente.php">Profilo studente</a></li>
+                <li><a href="dati_studente.php">Dati personali</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>

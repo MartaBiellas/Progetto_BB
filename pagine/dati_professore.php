@@ -50,7 +50,7 @@
 	<div class="nav">
 		<div class="centratonav">
 			<ul class="navlinks">
-				<li><a href="home_professore.php">Home Classi</a></li>
+				<li><a href="home_professore.php">Home</a></li>
 				<li id="active">Dati personali</li>
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
