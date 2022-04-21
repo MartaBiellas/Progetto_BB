@@ -208,37 +208,3 @@ ul.navlinks li a:hover{
 	display: none;
 }
 
-.elenco_libri{
-	display: inline-block;
-
-	background-color: #e9dbc2;
-	border: 1.5px solid #be935b;	
-	text-align: left;
-	margin: auto;
-	padding: 15px;
-	/* padding-right: 25px; */
-	padding-top: 7.5px;
-	/* padding-bottom: 10px; */
-}
-.elenco_libri h1,h2,h3,h4{
-	text-align: center;
-}
-.elenco_libri li{
-	margin:10px;
-	margin-left: 0px;
-
-}
-#form_restituzione{
-	/* display: inline; */
-	text-align: left;
-	width: max-content;
-}
-#tabella_selezione_libri{
-	text-align: left;
-	margin: auto;
-	/* border-collapse: collapse; */
-	font-size: smaller;
-}
-#tabella_selezione_libri th, #tabella_selezione_libri td:last-child{
-	text-align: center;
-}

@@ -66,7 +66,7 @@
             <p>
                 Se non ti sei ancora registrato: <a href="registrazione_professore.php"> vai alla registrazione </a> 
             </p>
-    </form>
+    
 
         <br>
 
@@ -104,8 +104,9 @@
 				}
 			?>	
         </p>
+        </form>
     </div>
-
+    <br>
     <?php 
         error_reporting(E_ALL ^ E_WARNING); // metodo globale ^ significa tranne e funziona da qui in poi
 		include('footer.php');
