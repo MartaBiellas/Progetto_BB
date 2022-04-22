@@ -26,7 +26,7 @@
 						cognome = '".$_POST["cognome"]."', 
 						email = '".$_POST["email"]."', 
 						data_nascita = '".$_POST["data_nascita"]."', 
-						materia = '".$_POST["materia"]."', 
+						materia = '".$_POST["materia"]."' 
 					WHERE email = '".$email."'";
 			if($conn->query($sql) === true) {
 				//echo "Record updated successfully";

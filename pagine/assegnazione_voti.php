@@ -51,8 +51,8 @@
         </div>
 		<table id="tab_index">
 				<tr>
-					<td width = "50%" >Orale <input type="radio" name="tipologia" value="alunno" checked> </td> 
-					<td width = "50%" >Scritto <input type="radio" name="tipologia" value="alunno"></td> 
+					<td width = "50%" >Orale <input type="radio" name="tipologia" value="Orale" checked> </td> 
+					<td width = "50%" >Scritto <input type="radio" name="tipologia" value="Scritto"></td> 
 				</tr>
 		</table>
 		
