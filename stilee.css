@@ -137,6 +137,11 @@ form{
     background-color: white;
 }
 
+.immagine {
+    width: 30%;
+    text-align: left;
+}
+
 .error {
     background-color: lightcoral;
     color:#990C18;
@@ -214,3 +219,22 @@ ul.navlinks li a:hover{
 	display: none;
 }
 
+.elenco_voti{
+    width: 50%;
+    margin: 0px auto; 
+    padding: 20px;
+    border: 1px solid black;
+    color: black;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+}
+
+
+.btnn {
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    background-color: darkgreen;
+    border: none;
+    border-radius: 55px;
+}
