@@ -38,6 +38,7 @@ $email = $_SESSION["email"];
 	<br>
 	<br>
 
+	<div class="utile reveal">
 	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 		<div class="input-group">
 			<label> Nome </label>
@@ -118,6 +119,7 @@ $email = $_SESSION["email"];
 		}
 		?>
 	</p>
+	</div>
 	<br>
 	<br>
 	<?php

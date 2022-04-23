@@ -35,6 +35,7 @@ $email = $_SESSION["email"];
         </div>
     </div>
 
+<div class="utile reveal">
     <div class="header">
         <h1 style="text-align: center; margin-top: 0px">VOTI DI</h1>
         <?php
@@ -117,6 +118,8 @@ $email = $_SESSION["email"];
 
         </table>
     </div>
+    </div>
+
 
     <br><br>
     <?php

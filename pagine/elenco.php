@@ -57,58 +57,60 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 			</ul>
 		</div>
 	</div>
-	<div class="contenuto-altro">
-		<h1 style="text-align: center; margin-top: 0px">
-			<?php
-			$sql = "
+
+	<div class="utile reveal">
+		<div class="contenuto-altro">
+			<h1 style="text-align: center; margin-top: 0px">
+				<?php
+				$sql = "
             SELECT *
             FROM classe
             WHERE classe.sezione= '$sezione' AND classe.anno = '$anno'";
 
-			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+				$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
 
-			$riga = $ris->fetch_assoc();
-			echo '<p>Classe: <b>' . $riga["anno"] . ' ' . $riga["sezione"] . '</b><br></p>';
+				$riga = $ris->fetch_assoc();
+				echo '<p>Classe: <b>' . $riga["anno"] . ' ' . $riga["sezione"] . '</b><br></p>';
 
-			?>
-		</h1>
-	</div>
+				?>
+			</h1>
+		</div>
 
 
-	<div class="contenuto">
-		<div class="elenco_voti">
-			<table id="tab_dati_personali">
+		<div class="contenuto">
+			<div class="elenco_voti">
+				<table id="tab_dati_personali">
 
-				<?php
+					<?php
 
-				$sql = "
+					$sql = "
 					SELECT *
 					FROM alunno
 					WHERE alunno.sezione= '$sezione' AND alunno.anno = '$anno'";
 
-				$dati_studenti = $conn->query($sql) or die("<p>Query fallita!</p>");
+					$dati_studenti = $conn->query($sql) or die("<p>Query fallita!</p>");
 
-				$sql = "
+					$sql = "
 					SELECT *
 					FROM professore
 					WHERE professore.email = '$email'";
 
-				$dati_professore = $conn->query($sql) or die("<p>Query fallita!</p>");
+					$dati_professore = $conn->query($sql) or die("<p>Query fallita!</p>");
 
-				$dati_professore = $dati_professore->fetch_assoc();
+					$dati_professore = $dati_professore->fetch_assoc();
 
-				$incremento = 0;
+					$incremento = 0;
 
-				while ($riga = $dati_studenti->fetch_assoc()) {
+					while ($riga = $dati_studenti->fetch_assoc()) {
 
-					$sql = "SELECT * 
+						$sql = "SELECT * 
 								FROM voto 
 								WHERE matricola_alunno ='$riga[matricola]' AND matricola_professore ='$dati_professore[matricola]'";
 
-					$ris1 = $conn->query($sql) or die("<p>Query fallita!</p>");
+						$ris1 = $conn->query($sql) or die("<p>Query fallita!</p>");
 
-					echo '<td>';
-					echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+						echo '<td>';
+						echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 								<script>
 								$(document).ready(function(){
 									$("#menuButton' . $incremento . '").click(function(){
@@ -117,41 +119,42 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 								});
 								</script>';
 
-					$sql = "SELECT AVG(valutazione) AS media
+						$sql = "SELECT AVG(valutazione) AS media
 								FROM voto
 								WHERE matricola_alunno ='$riga[matricola]' AND matricola_professore ='$dati_professore[matricola]'";
 
-					$ris2 = $conn->query($sql) or die("<p>Query fallita!</p>");
+						$ris2 = $conn->query($sql) or die("<p>Query fallita!</p>");
 
-					$tmp = $ris2->fetch_assoc();
-					echo '<br>';
-					echo "<tr><td><b>" . $riga["nome"] . ' ' . $riga["cognome"] . " </td>";
-					echo '<tr><td><button id="menuButton' . $incremento . '"  class = btn1> ' . $tmp["media"] . ' </button>';
-					echo '<div id="menu' . $incremento . '" style="display:none;">';
-					if ($ris1->num_rows == 0) {
-						echo '<p> Nessuno </p>';
-					} else {
-						echo '<ul><br>';
-						while ($riga = $ris1->fetch_assoc()) {
-							echo '<li>';
-							echo $riga["data"] . " - " . $riga["tipo"] . ":<b> " . $riga["valutazione"] . "</b>";
-							echo '</li>';
+						$tmp = $ris2->fetch_assoc();
+						echo '<br>';
+						echo "<tr><td><b>" . $riga["nome"] . ' ' . $riga["cognome"] . " </td>";
+						echo '<tr><td><button id="menuButton' . $incremento . '"  class = btn1> ' . $tmp["media"] . ' </button>';
+						echo '<div id="menu' . $incremento . '" style="display:none;">';
+						if ($ris1->num_rows == 0) {
+							echo '<p> Nessuno </p>';
+						} else {
+							echo '<ul><br>';
+							while ($riga = $ris1->fetch_assoc()) {
+								echo '<li>';
+								echo $riga["data"] . " - " . $riga["tipo"] . ":<b> " . $riga["valutazione"] . "</b>";
+								echo '</li>';
+							}
+							echo '</ul>';
 						}
-						echo '</ul>';
+						echo '</td>';
+						echo '</tr>';
+
+						$incremento = $incremento + 1;
+
+						$ris1 = null;
+						$ris2 = null;
+						echo "</div>";
 					}
-					echo '</td>';
-					echo '</tr>';
 
-					$incremento = $incremento + 1;
+					?>
 
-					$ris1 = null;
-					$ris2 = null;
-					echo "</div>";
-				}
-
-				?>
-
-			</table>
+				</table>
+			</div>
 		</div>
 	</div>
 

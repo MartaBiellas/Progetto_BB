@@ -34,42 +34,42 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 			<ul class="navlinks">
 				<li id="active">Home</li>
 				<li><a href="dati_professore.php">Dati Personali</a></li>
-				<!-- <li><a href="ritira.php">Ritira</a></li> -->
-				<!-- <li><a href="riconsegna.php">Riconsegna</a></li> -->
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>
 	</div>
 
-	<div class="contenuto-altro">
-		<h1 style="text-align: center; margin-top: 0px">ELENCO CLASSI PROFESSORE</h1>
-	</div>
+	<div class="utile reveal">
+		<div class="contenuto-altro">
+			<h1 style="text-align: center; margin-top: 0px">ELENCO CLASSI PROFESSORE</h1>
+		</div>
 
 
-	<div class="contenuto">
-		<?php
-		$sql = "
+		<div class="contenuto">
+			<?php
+			$sql = "
 			SELECT *
 			FROM professore
 			WHERE professore.email ='" . $email . "'";
 
-		$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
 
-		$riga = $ris->fetch_assoc();
-		echo "<p>Benvenuto <b>" . $riga["nome"] . " " . $riga["cognome"] . "</b><br></p>";
+			$riga = $ris->fetch_assoc();
+			echo "<p>Benvenuto <b>" . $riga["nome"] . " " . $riga["cognome"] . "</b><br></p>";
 
-		$sql = "
+			$sql = "
 			SELECT *
 			FROM insegna_in JOIN professore ON insegna_in.matricola_professore = professore.matricola
 			WHERE professore.email ='" . $email . "'";
-		//echo $sql;
+			//echo $sql;
 
-		$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
-		while ($riga = $ris->fetch_assoc()) {
-			echo '<a href="./elenco.php?classe=' . $riga["anno"] . '_' . $riga["sezione"] . '"><br><p><b>' . $riga["anno"] . ' ' . $riga["sezione"] . '</b></p></a>';
-		}
-		?>
+			$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+			while ($riga = $ris->fetch_assoc()) {
+				echo '<a href="./elenco.php?classe=' . $riga["anno"] . '_' . $riga["sezione"] . '"><br><p><b>' . $riga["anno"] . ' ' . $riga["sezione"] . '</b></p></a>';
+			}
+			?>
 
+		</div>
 	</div>
 
 
