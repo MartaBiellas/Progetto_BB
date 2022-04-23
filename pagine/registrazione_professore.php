@@ -89,7 +89,6 @@ else $tipologia = "utenti";
                     $myquery = "SELECT email 
 						    FROM professore 
 						    WHERE email='" . $_POST["email"] . "'";
-                    //echo $myquery; ERRORE QUI anche se query corretta
 
                     $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
                     if ($ris->num_rows > 0) {
@@ -102,7 +101,6 @@ else $tipologia = "utenti";
                         if ($conn->query($myquery) === true) {
                             session_start();
                             $_SESSION["email"] = $email;
-                            //$_SESSION["tipologia"]=$_POST["tipologia"];
 
                             $conn->close();
 
@@ -120,9 +118,9 @@ else $tipologia = "utenti";
     <br><br>
     </div>
     <?php
-    error_reporting(E_ALL ^ E_WARNING); // metodo globale ^ significa tranne e funziona da qui in poi
+    error_reporting(E_ALL ^ E_WARNING);
     include('footer.php');
-    // @include('footerrr.php');  // con @ evito la generazione di warnings o errors da parte della funzione
+
     ?>
 </body>
 

@@ -9,4 +9,3 @@
 	if($_SESSION["tipologia"]=="professore"){
 		header('location: home_professore.php');
 	}
-?>

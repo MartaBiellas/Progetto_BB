@@ -3,10 +3,6 @@ session_start();
 //echo session_id();
 
 require('../data/dati_connessione_db.php');
-// $servername = "localhost";
-// $db_name = "biblioteca";
-// $db_username = "root";
-// $db_password = "";
 
 if (isset($_SESSION['email'])) {
     header('location: pagine/home.php');
@@ -111,9 +107,9 @@ if (isset($_POST["password"])) {
     </div>
     <br>
     <?php
-    error_reporting(E_ALL ^ E_WARNING); // metodo globale ^ significa tranne e funziona da qui in poi
+    error_reporting(E_ALL ^ E_WARNING); 
     include('footer.php');
-    // @include('footerrr.php');  // con @ evito la generazione di warnings o errors da parte della funzione
+
     ?>
 </body>
 

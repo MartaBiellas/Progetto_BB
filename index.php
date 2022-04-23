@@ -1,30 +1,24 @@
 <?php
-	session_start();
-	//echo session_id();
+session_start();
+//echo session_id();
 
-	require('data/dati_connessione_db.php');
-	// $servername = "localhost";
-	// $db_name = "biblioteca";
-	// $db_username = "root";
-	// $db_password = "";
+require('data/dati_connessione_db.php');
 
- 	if(isset($_SESSION['email'])){
-		header('location: pagine/home.php');
-	} 
+if (isset($_SESSION['email'])) {
+	header('location: pagine/home.php');
+}
 
-	if(isset($_POST["email"])){
-		$email = $_POST["email"];
-	}
-	else{
-		$email = "";
-	}
-	
-	if (isset($_POST["password"])){
-		$password = $_POST["password"];
-	}
-	else {
-		$password = "";
-	}
+if (isset($_POST["email"])) {
+	$email = $_POST["email"];
+} else {
+	$email = "";
+}
+
+if (isset($_POST["password"])) {
+	$password = $_POST["password"];
+} else {
+	$password = "";
+}
 
 ?>
 
@@ -43,49 +37,50 @@
 
 <body>
 
-		<div class="header">
-			<h1>Benvenuto nel tuo registro elettronico!</h1>
-			<h2>Sei uno studente o un professore?</h2>
-			<br>
-		</div>
-		<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-			<table id="tab_index">
-				<tr>
-					<td width = "50%" >Studente <input type="radio" name="tipologia" value="alunno" checked> </td> 
-					<td width = "50%" >Professore <input type="radio" name="tipologia" value="professore"></td> 
-				</tr>
-				<tr>
-					<td width = "50%" ><img width = "100%" src="./img/studenti.jpg"></td>	
-					<td width = "50%" ><img width = "100%" src="./img/prof.jpg"></td>
-				</tr>
-			</table>
+	<div class="header">
+		<h1>Benvenuto nel tuo registro elettronico!</h1>
+		<h2>Sei uno studente o un professore?</h2>
+		<br>
+	</div>
+	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+		<table id="tab_index">
+			<tr>
+				<td width="50%">Studente <input type="radio" name="tipologia" value="alunno" checked> </td>
+				<td width="50%">Professore <input type="radio" name="tipologia" value="professore"></td>
+			</tr>
+			<tr>
+				<td width="50%"><img width="100%" src="./img/studenti.jpg"></td>
+				<td width="50%"><img width="100%" src="./img/prof.jpg"></td>
+			</tr>
+		</table>
 
 		<div class="input-group">
-            <button type="submit" value="Avanti" class="btn"> AVANTI </button>
+			<button type="submit" value="Avanti" class="btn"> AVANTI </button>
 		</div>
-		</form>
-	
+	</form>
+
 	<div class="contenuto">
-	<img src="./img/onda_sdf_grigia.png">
+		<img src="./img/onda_sdf_grigia.png">
 
 		<?php
-            if(isset($_POST["tipologia"])){
-				$tabella = $_POST["tipologia"];
-				$_SESSION["tipologia"]=$_POST["tipologia"];
+		if (isset($_POST["tipologia"])) {
+			$tabella = $_POST["tipologia"];
+			$_SESSION["tipologia"] = $_POST["tipologia"];
 
-				if($_POST["tipologia"]=="alunno"){
-					header('location: pagine/login_studente.php');
-				}
-				if($_POST["tipologia"]=="professore"){
-					header('location: pagine/login_professore.php');
-				}
+			if ($_POST["tipologia"] == "alunno") {
+				header('location: pagine/login_studente.php');
 			}
+			if ($_POST["tipologia"] == "professore") {
+				header('location: pagine/login_professore.php');
+			}
+		}
 		?>
-	</div> 
+	</div>
 
 
-	<?php 
-		include('pagine/footer.php')
+	<?php
+	include('pagine/footer.php')
 	?>
 </body>
+
 </html>
