@@ -116,6 +116,12 @@ form{
     text-align: left;
 }
 
+.centrato{
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+}
+
 .error {
     background-color: lightcoral;
     color:#990C18;

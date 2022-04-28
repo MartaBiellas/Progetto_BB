@@ -51,6 +51,10 @@ $email = $_SESSION["email"];
 			<label> Voto </label>
 			<input type="number" min="2" max="10" name="voto" required>
 		</div>
+		<div class="input-group">
+			<label> Data </label>
+			<input type="date" name="data" required>
+		</div>
 		<table id="tab_index">
 			<tr>
 				<td width="50%">Orale <input type="radio" name="tipologia" value="Orale" checked> </td>
@@ -91,6 +95,8 @@ $email = $_SESSION["email"];
 
 				$cognome = $_POST['cognome'];
 
+				$data = $_POST['data'];
+
 				$myquery = "
 						SELECT *
 						FROM alunno
@@ -103,7 +109,7 @@ $email = $_SESSION["email"];
 				$myquery = "
 						INSERT INTO voto (materia, data, tipo, valutazione, matricola_alunno, matricola_professore)
 
-						VALUES ('" . $professore['materia'] . "','" . date("Y-m-d", time()) . "','" . $_POST['tipologia'] . "', '" . $_POST['voto'] . "', '" . $alunno['matricola'] . "', '" . $professore['matricola'] . "')
+						VALUES ('" . $professore['materia'] . "','" .$data. "','" . $_POST['tipologia'] . "', '" . $_POST['voto'] . "', '" . $alunno['matricola'] . "', '" . $professore['matricola'] . "')
 
 						";
 

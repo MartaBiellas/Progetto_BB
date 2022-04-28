@@ -44,6 +44,7 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<title>Professore - Home Professore</title>
 	<link rel="stylesheet" type="text/css" href="../stile.css">
+	<link rel="stylesheet" type="text/css" href="../stilee.css">
 </head>
 
 <body>
@@ -76,7 +77,7 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 
 
 	<div class="contenuto">
-		<div class="elenco_voti">
+		<!-- <div class="elenco_voti"> -->
 			<table id="tab_dati_personali">
 
 				<?php
@@ -126,8 +127,8 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 					$tmp = $ris2->fetch_assoc();
 					echo '<br>';
 					echo "<tr><td><b>" . $riga["nome"] . ' ' . $riga["cognome"] . " </td>";
-					echo '<tr><td><button id="menuButton' . $incremento . '"  class = btn1> ' . $tmp["media"] . ' </button>';
-					echo '<div id="menu' . $incremento . '" style="display:none;">';
+					echo '<td><button id="menuButton' . $incremento . '"  class = btn1> ' . $tmp["media"] . ' </button>';
+					echo '<div id="menu' . $incremento . '" class="centrato" style="display:none;">';
 					if ($ris1->num_rows == 0) {
 						echo '<p> Nessuno </p>';
 					} else {
@@ -152,7 +153,7 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 				?>
 
 			</table>
-		</div>
+		<!-- </div> -->
 	</div>
 
 	<br>
