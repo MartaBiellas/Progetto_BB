@@ -149,6 +149,7 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 						$ris2 = null;
 						echo "</div>";
 					}
+				}
 
 					?>
 
