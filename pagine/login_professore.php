@@ -37,77 +37,78 @@ if (isset($_POST["password"])) {
 
 <body>
 
+    <div class="utile reveal">
+        <div class="header">
+            <div class="immagine">
+                <a href="../index.php"><img src="../img/freccia.png"></a>
+            </div>
 
-    <div class="header">
-        <div class="immagine">
-            <a href="../index.php"><img src="../img/freccia.png"></a>
+            <img src="../img/prof.jpg">
+            <h1>PROFESSORE</h1>
+            <h2>Login</h2>
         </div>
 
-        <img src="../img/prof.jpg">
-        <h1>PROFESSORE</h1>
-        <h2>Login</h2>
-    </div>
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+            <div class="input-group">
+                <label> Email </label>
+                <input type="text" name="email" <?php echo "value = '$email'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Password </label>
+                <input type="password" name="password" <?php echo "value = '$password'" ?> required>
+            </div>
 
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group">
-            <label> Email </label>
-            <input type="text" name="email" <?php echo "value = '$email'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Password </label>
-            <input type="password" name="password" <?php echo "value = '$password'" ?> required>
-        </div>
+            <div class="input-group">
+                <button type="submit" name="login" class="btn"> Login </button>
+            </div>
 
-        <div class="input-group">
-            <button type="submit" name="login" class="btn"> Login </button>
-        </div>
-
-        <p>
-            Se non ti sei ancora registrato: <a href="registrazione_professore.php"> vai alla registrazione </a>
-        </p>
+            <p>
+                Se non ti sei ancora registrato: <a href="registrazione_professore.php"> vai alla registrazione </a>
+            </p>
 
 
-        <br>
+            <br>
 
-        <p>
-            <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (empty($_POST["email"]) or empty($_POST["password"])) {
-                    echo "<p>Campi lasciati vuoti</p>";
-                } else {
-                    $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
-                    if ($conn->connect_error) {
-                        die("<p>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
-                    }
-                    //echo "connessione riuscita";
+            <p>
+                <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if (empty($_POST["email"]) or empty($_POST["password"])) {
+                        echo "<p>Campi lasciati vuoti</p>";
+                    } else {
+                        $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+                        if ($conn->connect_error) {
+                            die("<p>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
+                        }
+                        //echo "connessione riuscita";
 
-                    $tabella = $_SESSION["tipologia"];
+                        $tabella = $_SESSION["tipologia"];
 
-                    $myquery = "SELECT email, password 
+                        $myquery = "SELECT email, password 
                         FROM $tabella 
                         WHERE email='$email'
                             AND password='$password'";
 
-                    $ris = $conn->query($myquery) or die("<p>Query fallita! " . $conn->error . "</p>");
+                        $ris = $conn->query($myquery) or die("<p>Query fallita! " . $conn->error . "</p>");
 
-                    if ($ris->num_rows == 0) {
-                        echo '<p div class = "error">Attenzione: utente non trovato o password errata!</p>';
-                        $conn->close();
-                    } else {
-                        $_SESSION["email"] = $email;
+                        if ($ris->num_rows == 0) {
+                            echo '<p div class = "error">Attenzione: utente non trovato o password errata!</p>';
+                            $conn->close();
+                        } else {
+                            $_SESSION["email"] = $email;
 
-                        $conn->close();
-                        header("location: home_professore.php");
+                            $conn->close();
+                            header("location: home_professore.php");
+                        }
                     }
                 }
-            }
-            ?>
-        </p>
-    </form>
+                ?>
+            </p>
+        </form>
+    </div>
     </div>
     <br>
     <?php
-    error_reporting(E_ALL ^ E_WARNING); 
+    error_reporting(E_ALL ^ E_WARNING);
     include('footer.php');
 
     ?>

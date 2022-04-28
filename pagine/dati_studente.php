@@ -59,92 +59,94 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		</div>
 	</div>
 
-	<div class="header">
-		<img src="../img/profilo.jpg">
-		<h1>STUDENTE</h1>
-	</div>
+	<div class="utile reveal">
+		<div class="header">
+			<img src="../img/profilo.jpg">
+			<h1>STUDENTE</h1>
+		</div>
 
-	<?php
-	$sql = "SELECT email, password, nome, cognome, data_nascita, sezione, anno 
+		<?php
+		$sql = "SELECT email, password, nome, cognome, data_nascita, sezione, anno 
 				FROM alunno 
 				WHERE email='" . $email . "'";
-	//echo $sql;
-	$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
-	$row = $ris->fetch_array(MYSQLI_ASSOC);
-	?>
-	<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-		<table id="tab_dati_personali">
-			<tr>
-				<td>
-					<div class="input-group"><label> Nome </label></div>
-				</td>
-				<td>
-					<div class="input-group"><input type="text" name="nome" value="<?php echo $row["nome"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
-				</td>
-			</tr>
+		//echo $sql;
+		$ris = $conn->query($sql) or die("<p>Query fallita!</p>");
+		$row = $ris->fetch_array(MYSQLI_ASSOC);
+		?>
+		<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+			<table id="tab_dati_personali">
+				<tr>
+					<td>
+						<div class="input-group"><label> Nome </label></div>
+					</td>
+					<td>
+						<div class="input-group"><input type="text" name="nome" value="<?php echo $row["nome"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					<div class="input-group"><label> Cognome </label></div>
-				</td>
-				<td>
-					<div class="input-group"><input type="text" name="cognome" value="<?php echo $row["cognome"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
-				</td>
-			</tr>
+				<tr>
+					<td>
+						<div class="input-group"><label> Cognome </label></div>
+					</td>
+					<td>
+						<div class="input-group"><input type="text" name="cognome" value="<?php echo $row["cognome"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					<div class="input-group"><label> Email </label></div>
-				</td>
-				<td>
-					<div class="input-group"><input type="text" name="email" value="<?php echo $row["email"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
-				</td>
-			</tr>
+				<tr>
+					<td>
+						<div class="input-group"><label> Email </label></div>
+					</td>
+					<td>
+						<div class="input-group"><input type="text" name="email" value="<?php echo $row["email"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					<div class="input-group"><label> Password </label></div>
-				</td>
-				<td>
-					<div class="input-group"><input type="text" name="password" value="<?php echo $row["password"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
-				</td>
-			</tr>
+				<tr>
+					<td>
+						<div class="input-group"><label> Password </label></div>
+					</td>
+					<td>
+						<div class="input-group"><input type="text" name="password" value="<?php echo $row["password"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					<div class="input-group"><label> Data nascita </label></div>
-				</td>
-				<td>
-					<div class="input-group"><input type="data" name="data_nascita" value="<?php echo $row["data_nascita"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
-				</td>
-			</tr>
+				<tr>
+					<td>
+						<div class="input-group"><label> Data nascita </label></div>
+					</td>
+					<td>
+						<div class="input-group"><input type="data" name="data_nascita" value="<?php echo $row["data_nascita"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					<div class="input-group"><label> Sezione </label></div>
-				</td>
-				<td>
-					<div class="input-group"><input type="text" name="sezione" value="<?php echo $row["sezione"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
-				</td>
-			</tr>
+				<tr>
+					<td>
+						<div class="input-group"><label> Sezione </label></div>
+					</td>
+					<td>
+						<div class="input-group"><input type="text" name="sezione" value="<?php echo $row["sezione"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					<div class="input-group"><label> Anno </label></div>
-				</td>
-				<td>
-					<div class="input-group"><input type="text" name="anno" value="<?php echo $row["anno"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
-				</td>
-			</tr>
-		</table>
-		<p style="text-align: center">
-			<br>
-			<input class="hidden" type="text" name="modifica" value="<?php if ($modifica == false) echo 'true';
-																		else echo ''; ?>">
-			<input type="submit" class="btn" value="<?php if ($modifica == false) echo 'Modifica';
-													else echo 'Conferma'; ?>">
-		</p>
-	</form>
+				<tr>
+					<td>
+						<div class="input-group"><label> Anno </label></div>
+					</td>
+					<td>
+						<div class="input-group"><input type="text" name="anno" value="<?php echo $row["anno"]; ?>" <?php if (!$modifica) echo "disabled='disabled'" ?>></div>
+					</td>
+				</tr>
+			</table>
+			<p style="text-align: center">
+				<br>
+				<input class="hidden" type="text" name="modifica" value="<?php if ($modifica == false) echo 'true';
+																			else echo ''; ?>">
+				<input type="submit" class="btn" value="<?php if ($modifica == false) echo 'Modifica';
+														else echo 'Conferma'; ?>">
+			</p>
+		</form>
+	</div>
 	<br><br>
 	<?php
 	include('footer.php')

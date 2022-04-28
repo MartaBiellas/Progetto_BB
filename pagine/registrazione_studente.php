@@ -33,102 +33,104 @@ else $tipologia = "alunno";
 
 <body>
 
-    <div class="header">
-        <img src="../img/studenti.jpg">
-        <h1>STUDENTE</h1>
-        <h2>Registrazione</h2>
-    </div>
-
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group">
-            <label> Nome </label>
-            <input type="text" name="nome" <?php echo "value = '$nome'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Cognome </label>
-            <input type="text" name="cognome" <?php echo "value = '$cognome'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Data di nascita </label>
-            <input type="data" name="data_nascita" <?php echo "value = '$data_nascita'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Sezione </label>
-            <input type="text" name="sezione" <?php echo "value = '$sezione'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Anno </label>
-            <input type="text" name="anno" <?php echo "value = '$anno'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Email </label>
-            <input type="text" name="email" <?php echo "value = '$email'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Password </label>
-            <input type="password" name="password" <?php echo "value = '$password'" ?> required>
-        </div>
-        <div class="input-group">
-            <label> Conferma psw </label>
-            <input type="password" name="conferma" <?php echo "value = '$conferma'" ?> required>
+    <div class="utile reveal">
+        <div class="header">
+            <img src="../img/studenti.jpg">
+            <h1>STUDENTE</h1>
+            <h2>Registrazione</h2>
         </div>
 
-        <div class="input-group">
-            <button type="submit" name="Registrati" class="btn"> Registrati </button>
-        </div>
+        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+            <div class="input-group">
+                <label> Nome </label>
+                <input type="text" name="nome" <?php echo "value = '$nome'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Cognome </label>
+                <input type="text" name="cognome" <?php echo "value = '$cognome'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Data di nascita </label>
+                <input type="data" name="data_nascita" <?php echo "value = '$data_nascita'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Sezione </label>
+                <input type="text" name="sezione" <?php echo "value = '$sezione'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Anno </label>
+                <input type="text" name="anno" <?php echo "value = '$anno'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Email </label>
+                <input type="text" name="email" <?php echo "value = '$email'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Password </label>
+                <input type="password" name="password" <?php echo "value = '$password'" ?> required>
+            </div>
+            <div class="input-group">
+                <label> Conferma psw </label>
+                <input type="password" name="conferma" <?php echo "value = '$conferma'" ?> required>
+            </div>
 
-        <p>
-            Se sei già registrato: <a href="login_studente.php"> vai al login </a>
-        </p>
-        <br>
-        <p>
-            <?php
-            if (isset($_POST["email"]) and isset($_POST["password"])) {
-                if ($_POST["email"] == "" or $_POST["password"] == "") {
-                    echo '<p div class = "error"> email e password non possono essere vuoti! <p>';
-                } elseif ($_POST["password"] != $_POST["conferma"]) {
-                    echo '<p div class = "error"> Le password inserite non corrispondono<p>';
-                } else {
-                    $conn = new mysqli("localhost", "root", "", "database_bb");
-                    if ($conn->connect_error) {
-                        die("<p>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
-                    }
+            <div class="input-group">
+                <button type="submit" name="Registrati" class="btn"> Registrati </button>
+            </div>
 
-                    $myquery = "SELECT email 
+            <p>
+                Se sei già registrato: <a href="login_studente.php"> vai al login </a>
+            </p>
+            <br>
+            <p>
+                <?php
+                if (isset($_POST["email"]) and isset($_POST["password"])) {
+                    if ($_POST["email"] == "" or $_POST["password"] == "") {
+                        echo '<p div class = "error"> email e password non possono essere vuoti! <p>';
+                    } elseif ($_POST["password"] != $_POST["conferma"]) {
+                        echo '<p div class = "error"> Le password inserite non corrispondono<p>';
+                    } else {
+                        $conn = new mysqli("localhost", "root", "", "database_bb");
+                        if ($conn->connect_error) {
+                            die("<p>Connessione al server non riuscita: " . $conn->connect_error . "</p>");
+                        }
+
+                        $myquery = "SELECT email 
 						    FROM alunno 
 						    WHERE email='" . $_POST["email"] . "'";
-                    //echo $myquery
+                        //echo $myquery
 
-                    $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
-                    if ($ris->num_rows > 0) {
-                        echo '<p div class = "error">Questo profilo esiste già</p>';
-                    } else {
-                        $conn->query('SET FOREIGN_KEY_CHECKS= 0;');
-                        $myquery = "INSERT INTO alunno (email, password, nome, cognome, data_nascita, sezione, anno)
-                                    VALUES ('$email', '$password', '$nome', '$cognome','$data_nascita','$sezione','$anno')";
-                        $conn->query('SET FOREIGN_KEY_CHECKS= 1;');
-                        if ($conn->query($myquery) === true) {
-                            session_start();
-                            $_SESSION["email"] = $email;
-                            //$_SESSION["tipologia"]=$_POST["tipologia"];
-
-                            $conn->close();
-
-                            echo '<p div class = "ok"> Registrazione effettuata con successo!<br>Sarai ridirezionato alla home tra 5 secondi.</p>';
-                            header('Refresh: 5; URL=home_studente.php');
+                        $ris = $conn->query($myquery) or die("<p>Query fallita!</p>");
+                        if ($ris->num_rows > 0) {
+                            echo '<p div class = "error">Questo profilo esiste già</p>';
                         } else {
-                            echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
+                            $conn->query('SET FOREIGN_KEY_CHECKS= 0;');
+                            $myquery = "INSERT INTO alunno (email, password, nome, cognome, data_nascita, sezione, anno)
+                                    VALUES ('$email', '$password', '$nome', '$cognome','$data_nascita','$sezione','$anno')";
+                            $conn->query('SET FOREIGN_KEY_CHECKS= 1;');
+                            if ($conn->query($myquery) === true) {
+                                session_start();
+                                $_SESSION["email"] = $email;
+                                //$_SESSION["tipologia"]=$_POST["tipologia"];
+
+                                $conn->close();
+
+                                echo '<p div class = "ok"> Registrazione effettuata con successo!<br>Sarai ridirezionato alla home tra 5 secondi.</p>';
+                                header('Refresh: 5; URL=home_studente.php');
+                            } else {
+                                echo "Non è stato possibile effettuare la registrazione per il seguente motivo: " . $conn->error;
+                            }
                         }
                     }
                 }
-            }
-            ?>
-        </p>
-    </form>
+                ?>
+            </p>
+        </form>
+    </div>
     <br><br>
     </div>
     <?php
-    error_reporting(E_ALL ^ E_WARNING); 
+    error_reporting(E_ALL ^ E_WARNING);
     include('footer.php');
 
     ?>
