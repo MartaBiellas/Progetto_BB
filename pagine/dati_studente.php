@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<br>
 				<input class="hidden" type="text" name="modifica" value="<?php if ($modifica == false) echo 'true';
 																			else echo ''; ?>">
-				<input type="submit" class="btn" value="<?php if ($modifica == false) echo 'Modifica';
+				<input type="submit" class="btn button insta-button" value="<?php if ($modifica == false) echo 'Modifica';
 														else echo 'Conferma'; ?>">
 			</p>
 		</form>

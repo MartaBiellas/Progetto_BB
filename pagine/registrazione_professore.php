@@ -69,7 +69,7 @@ else $tipologia = "utenti";
             </div>
 
             <div class="input-group">
-                <button type="submit" name="Registrati" class="btn"> Registrati </button>
+                <button type="submit" name="Registrati" class="btn button insta-button"> Registrati </button>
             </div>
 
             <p>

@@ -64,7 +64,7 @@ $email = $_SESSION["email"];
 		</table>
 
 		<div class="input-group">
-			<button type="submit" name="login" class="btn"> assegna voto </button>
+			<button type="submit" name="login" class="btn button insta-button"> assegna voto </button>
 		</div>
 
 	</form>

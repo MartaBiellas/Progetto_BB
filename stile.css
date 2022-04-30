@@ -211,3 +211,29 @@ ul.navlinks li a:hover{
     border: none;
     border-radius: 55px;
 }
+
+/* Button */
+
+.button:hover{
+    position:relative;
+    animation: scopri-di-piu-insta 1.2s cubic-bezier(.03, .8, .56, 1.2) ;
+  }
+  
+  .insta-button:hover{
+    position:relative;
+    animation: scopri-di-piu-insta 1.4s cubic-bezier(.03, .8, .56, 1.2) ;
+  }
+  
+  @keyframes scopri-di-piu-insta{
+    0% {
+      transform: scale(1);
+    }
+  
+    20% {
+      transform: scale(0.9);
+    }
+  
+    100%{
+      transform: scale(1);
+    }
+  }

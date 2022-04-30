@@ -57,7 +57,7 @@ if (isset($_POST["password"])) {
 			</table>
 
 			<div class="input-group">
-				<button type="submit" value="Avanti" class="btn"> AVANTI </button>
+				<button type="submit" value="Avanti" class="btn button insta-button"> AVANTI </button>
 			</div>
 		</form>
 	</div>

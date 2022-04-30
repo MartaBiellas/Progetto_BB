@@ -129,7 +129,7 @@ $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 					$tmp = $ris2->fetch_assoc();
 					echo '<br>';
 					echo "<tr><td><b>" . $riga["nome"] . ' ' . $riga["cognome"] . " </td>";
-					echo '<td><button id="menuButton' . $incremento . '"  class = btn1> ' . $tmp["media"] . ' </button>';
+					echo '<td><button id="menuButton' . $incremento . '"  class = btn1 button insta-button> ' . $tmp["media"] . ' </button>';
 					echo '<div id="menu' . $incremento . '" class="centrato" style="display:none;">';
 					if ($ris1->num_rows == 0) {
 						echo '<p> Nessuno </p>';

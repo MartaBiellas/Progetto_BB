@@ -59,7 +59,7 @@ if (isset($_POST["password"])) {
             </div>
 
             <div class="input-group">
-                <button type="submit" name="login" class="btn"> Login </button>
+                <button type="submit" name="login" class="btn button insta-button"> Login </button>
             </div>
 
             <p>
